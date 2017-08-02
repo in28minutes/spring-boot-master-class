@@ -29,10 +29,24 @@ Developing your first Spring Boot Web Application is fun.
 - Step 24: Refactor and add Logout Functionality using Spring Security
 - Step 25: Exception Handling
 
-## Complete Code Example
+## Installing MySQL
 
-### Schema
+- Install MySQL https://dev.mysql.com/doc/en/installing.html
+  - More details : http://www.mysqltutorial.org/install-mysql/
+- Startup the Server (as a service)
+- Go to command propmt (or terminal)
+   - Execute following commands to create a database and a user
 
+```
+mysql --user=user_name --password db_name
+create database todo_example;
+create user 'todouser'@'localhost' identified by 'YOUR_PASSWORD';
+grant all on todo_example.* to 'todouser'@'localhost';
+```
+
+- Execute following sql queries to create the table and insert the data
+
+Table
 ```sql
 create table todo 
 (id integer not null, 
@@ -40,20 +54,41 @@ desc varchar(255),
 is_done boolean not null, 
 target_date timestamp, 
 user varchar(255), 
-primary key (id))
+primary key (id));
 ```
 
-### Data
+Data
 ```sql
 INSERT INTO TODO
-VALUES(10001, 'Learn Spring Boot', false, sysdate(),'in28Minutes')
+VALUES(10001, 'Learn Spring Boot', false, sysdate(),'in28Minutes');
 
 INSERT INTO TODO
-VALUES(10002, 'Learn RESTful Web Services', false, sysdate(),'in28Minutes')
+VALUES(10002, 'Learn RESTful Web Services', false, sysdate(),'in28Minutes');
 
 INSERT INTO TODO
-VALUES(10003, 'Learn SOAP Web Services', false, sysdate(),'in28Minutes')
+VALUES(10003, 'Learn SOAP Web Services', false, sysdate(),'in28Minutes');
 ```
+
+## Code changes to connect to MySQL
+- Add dependency to pom.xml (and remove H2 dependency)
+```xml
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+</dependency>
+```
+- Configure application.properties
+
+```properties
+spring.jpa.hibernate.ddl-auto=none
+spring.datasource.url=jdbc:mysql://localhost:3306/todo_example
+spring.datasource.username=todouser
+spring.datasource.password=YOUR_PASSWORD
+```
+- Create the table shown in the Schema below
+- Insert the data shown below
+
+## Complete Code Example
 
 
 ### /pom.xml
