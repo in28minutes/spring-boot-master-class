@@ -29,6 +29,17 @@ Developing your first Spring Boot Web Application is fun.
 - Step 24: Refactor and add Logout Functionality using Spring Security
 - Step 25: Exception Handling
 
+##### After Completing "Introduction to JPA"
+
+- Step 26: Adding Dependencies for JPA and H2
+- Step 27: Configuring H2 Console
+- Step 28: Create Todo Entity and JPA Repository
+- Step 29: Insert Todo using JPA Repository
+- Step 30: Update, Delete and Retrieve Todos using JPA Repository
+- Step 31: Data initialization with data.sql
+- Step 32: Connecting JPA to other databases
+- Step 33: Upgrading to Spring Boot 2 and Spring 5
+
 ## Installing and Setting Up MySQL
 
 - Install MySQL https://dev.mysql.com/doc/en/installing.html
