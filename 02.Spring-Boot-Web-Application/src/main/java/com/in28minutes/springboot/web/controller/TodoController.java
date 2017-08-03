@@ -66,14 +66,14 @@ public class TodoController {
 
 		//if(id==1)
 			//throw new RuntimeException("Something went wrong");
-		repository.delete(id);
+		repository.deleteById(id);
 		//service.deleteTodo(id);
 		return "redirect:/list-todos";
 	}
 
 	@RequestMapping(value = "/update-todo", method = RequestMethod.GET)
 	public String showUpdateTodoPage(@RequestParam int id, ModelMap model) {
-		Todo todo = repository.findOne(id);
+		Todo todo = repository.findById(id).get();
 		//Todo todo = service.retrieveTodo(id);
 		model.put("todo", todo);
 		return "todo";
