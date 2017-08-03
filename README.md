@@ -35,6 +35,7 @@ Here is a quick overview of different sections of the course:
 - Introduction to Mocking with Mockito in 5 Steps
 - Advanced Features of Spring Boot in 25 Steps - We learn these developing a simple API for managing survey questionnaire.
 - Introduction to JPA in 10 Steps
+- Connecting our Todo Management Web Application to JPA
 
 You will be using REST Services, Spring (Dependency Management), Spring MVC, Spring Boot, Spring Security (Authentication and Authorization), BootStrap (Styling Pages), Maven (dependencies management), Eclipse (IDE) and Tomcat Embedded Web Server. We will help you set up each one of these. 
 
