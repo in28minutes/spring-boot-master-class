@@ -133,4 +133,111 @@ Refer each steps
 - [Twitter](http://twitter.com/in28minutes)
 - [Google Plus](https://plus.google.com/u/3/110861829188024231119)
 
-## Todo
+## Notes
+
+```
+Introduction
+
+Spring Boot Master Class - Preview
+Spring Boot Master Class - Course Overview
+Spring Boot Master Class - Git Repository
+Spring Boot Master Class - Installing Basic Tools
+
+
+Step 0 : Spring Boot in 10 Steps - Section Introduction
+Step 1 : Introduction to Spring Boot - Goals and Important Features
+Step 2 : Developing Spring Applications before Spring Boot
+Step 3 : Using Spring Initializr to create a Spring Boot Application
+Step 4 : Creating a Simple REST Controller
+Step 5 : What is Spring Boot Auto Configuration?
+Step 6 : Spring Boot vs Spring vs Spring MVC
+Step 7 : Spring Boot Starter Projects - Starter Web and Starter JPA
+Step 8 : Overview of different Spring Boot Starter Projects
+Step 9 : Spring Boot Actuator
+Step 10 : Spring Boot Developer Tools
+
+
+Step 0 : Web Application with Spring Boot - Section Introduction
+Step 01: Part 1 Basic Spring Boot Web Application Setup
+Step 01: Part 2 Pom.xml, Spring Boot Application and application properties
+Step 02: Part 1 First Spring MVC Controller, @ResponseBody, @Controller
+Step 02: Part 2 Understanding HTTP Request Flow
+Step 03: Demystifying some of the Spring Boot magic
+Step 04: Redirect to Login JSP - @ResponseBody and View Resolver
+Step 05: Show userid and password on welcome page - ModelMap and @RequestParam
+Step 06: DispatcherServlet and Spring MVC Flow
+Step 07: Your First HTML form
+Step 08: Add hard-coded validation of userid and password
+Step 09: Magic of Spring
+Step 10: Create TodoController and list-todos view. Make TodoService a @Service
+Step 11: Architecture of Web Applications
+Step 12: Session vs Model vs Request - @SessionAttributes
+Step 13: Add new todo
+Step 14: Display Todos in a table using JSTL Tags
+Step 15: Bootstrap for Page Formatting using webjars
+Step 16: Let's delete a Todo
+Step 17: Format Add Todo Page and Adding Basic HTML5 form validation
+Step 18: Part 1 Validations with Hibernate Validator - Using Command Bean
+Step 18: Part 2 Using JSR 349 Validations
+Step 19: Updating a todo
+Step 20: Let's add a Target Date for Todo - Use initBinder to Handle Date Fields
+Step 21: JSP Fragments and Navigation Bar
+Step 22: Preparing for Spring Security
+Step 23: Initial Spring Security Setup
+Step 24: Refactor and add Logout Functionality using Spring Security
+Step 25: Exception Handling
+
+
+Step 0 : JUnit in 5 Steps - Section Introduction
+Step 1 : What is JUnit and Unit Testing?
+Step 2 : First JUnit Project and Green Bar
+Step 3 : First Code and First Unit Test
+Step 4 : Other assert methods
+Step 5 : Important annotations
+
+Step 0 : Mockito in 5 Steps - Section Introduction
+Step 1 : Setting up an example using http://start.spring.io.
+Step 2 : Using a Stubs - Disadvantages
+Step 3 : Your first mock.
+Step 4 : Using Mockito Annotations - @Mock, @InjectMocks, @RunWith(MockitoJUnitRunner.class)
+Step 5 : Mocking List interface
+
+Section Introduction - Spring Boot Deep Dive with a simple API
+
+Step 0 : JPA with Spring Boot in 10 Steps - Section Introduction
+Step 1 : Object Relational Impedence Mismatch - Understanding the problem that JPA solves
+Step 2 : World before JPA - JDBC, Spring JDBC and myBatis
+Step 3 : Introduction to JPA
+Step 4 : Creating a JPA Project using Spring Initializr
+Step 5 : Defining a JPA Entity - User
+Step 6 : Defining a Service to manage the Entity - UserService and EntityManager
+Step 7 : Using a Command Line Runner to save the User to database.
+Step 8 : Magic of Spring Boot and In Memory Database H2
+Step 9 : Introduction to Spring Data JPA
+Step 10 : More JPA Repository : findById and findAll
+
+Section Introduction - Connecting Web Application with JPA
+Step 26: Adding Dependencies for JPA and H2
+Step 27: Configuring H2 Console
+Step 28: Create Todo Entity and JPA Repository
+Step 29: Insert Todo using JPA Repository
+Step 30: Update, Delete and Retrieve Todos using JPA Repository
+Step 31: Data initialization with data.sql
+Step 32: Connecting JPA to other databases
+Step 33: Upgrading to Spring Boot 2 and Spring 5
+
+
+Appendix Section Introduction - First 10 Steps in Spring 
+Step 1 : Setting up a Spring Project using htttp://start.spring.io
+Step 2 : Understanding Tight Coupling using the Binary Search Algorithm Example
+Step 3 : Making the Binary Search Algorithm Example Loosely Coupled
+Step 4 : Using Spring to Manage Dependencies - @Component, @Autowired
+Step 5 : What is happening in the background?
+Step 6 : Dynamic auto wiring and Troubleshooting - @Primary
+Step 7 : Constructor and Setter Injection
+Step 8 : Spring Modules
+Step 9 : Spring Projects
+Step 10 : Why is Spring Popular?
+
+Congratulations!
+```
