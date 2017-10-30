@@ -188,6 +188,7 @@ Step 24: Refactor and add Logout Functionality using Spring Security
 Step 25: Exception Handling
 
 
+Introduction to JUnit in 5 Steps
 Step 0 : JUnit in 5 Steps - Section Introduction
 Step 1 : What is JUnit and Unit Testing?
 Step 2 : First JUnit Project and Green Bar
@@ -195,15 +196,17 @@ Step 3 : First Code and First Unit Test
 Step 4 : Other assert methods
 Step 5 : Important annotations
 
+Introduction to Mockito in 5 Steps
 Step 0 : Mockito in 5 Steps - Section Introduction
 Step 1 : Setting up an example using http://start.spring.io.
-Step 2 : Using a Stubs - Disadvantages
-Step 3 : Your first mock.
+Step 2 : Using Stubs - Disadvantages
+Step 3 : Your first Mock.
 Step 4 : Using Mockito Annotations - @Mock, @InjectMocks, @RunWith(MockitoJUnitRunner.class)
 Step 5 : Mocking List interface
 
 Section Introduction - Spring Boot Deep Dive with a simple API
 
+Introduction to JPA in 10 Steps
 Step 0 : JPA with Spring Boot in 10 Steps - Section Introduction
 Step 1 : Object Relational Impedence Mismatch - Understanding the problem that JPA solves
 Step 2 : World before JPA - JDBC, Spring JDBC and myBatis
@@ -211,7 +214,7 @@ Step 3 : Introduction to JPA
 Step 4 : Creating a JPA Project using Spring Initializr
 Step 5 : Defining a JPA Entity - User
 Step 6 : Defining a Service to manage the Entity - UserService and EntityManager
-Step 7 : Using a Command Line Runner to save the User to database.
+Step 7 : Using a Command Line Runner to save the User to Database
 Step 8 : Magic of Spring Boot and In Memory Database H2
 Step 9 : Introduction to Spring Data JPA
 Step 10 : More JPA Repository : findById and findAll
