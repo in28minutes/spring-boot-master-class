@@ -5,7 +5,7 @@
 - MockMvc framework
 - @MockBean
 - Programming Tip
- - Be an expert at Mockito - https://www.youtube.com/watch?v=d2KwvXQgQx4
+ - Be an expert at Mockito - https://courses.in28minutes.com/p/mockito-for-beginner-in-5-steps
 
 ## Useful Snippets and References
 First Snippet

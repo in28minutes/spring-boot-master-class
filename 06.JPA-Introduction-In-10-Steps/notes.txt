@@ -1,3 +1,5 @@
+## JPA and in memory database H2
+
 Questions
 - Where is the database created?
 - What schema is used to create the tables?
