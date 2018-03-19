@@ -1,5 +1,5 @@
 ## What You Will Learn during this Step:
-- You first GET Parameter
+- You first GET Parameter.
 - Problem with using GET
 
 ## Snippets
