@@ -28,7 +28,7 @@ First Snippet
 ```
 
 ## Exercises
-- Find out from documentation (https://docs.spring.io/spring-boot/docs/current/reference/html/howto-embedded-servlet-containers.html) how to switch to undertow!
+- Find out from documentation (https://docs.spring.io/spring-boot/docs/current/reference/html/howto-embedded-web-servers.html) how to switch to undertow!
 
 ## Files List
 ### pom.xml
