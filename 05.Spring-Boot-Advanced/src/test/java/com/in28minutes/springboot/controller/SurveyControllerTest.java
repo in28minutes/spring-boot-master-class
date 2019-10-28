@@ -51,7 +51,7 @@ public class SurveyControllerTest {
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
-		String expected = "{id:Question1,description:Largest Country in the World,correctAnswer:Russia}";
+		String expected = "{id:Question1,description:\"Largest Country in the World\",correctAnswer:Russia}";
 
 		JSONAssert.assertEquals(expected, result.getResponse()
 				.getContentAsString(), false);

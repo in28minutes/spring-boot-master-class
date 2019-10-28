@@ -6,13 +6,14 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
 
+import org.json.JSONException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
-import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -45,7 +46,7 @@ public class SurveyControllerIT {
 	}
 
 	@Test
-	public void testRetrieveSurveyQuestion() {
+	public void testRetrieveSurveyQuestion() throws JSONException {
 
 		HttpEntity<String> entity = new HttpEntity<String>(null, headers);
 
@@ -53,7 +54,7 @@ public class SurveyControllerIT {
 				createURLWithPort("/surveys/Survey1/questions/Question1"),
 				HttpMethod.GET, entity, String.class);
 
-		String expected = "{id:Question1,description:Largest Country in the World,correctAnswer:Russia}";
+		String expected = "{id:Question1,description:\"Largest Country in the World\",correctAnswer:Russia}";
 
 		JSONAssert.assertEquals(expected, response.getBody(), false);
 	}
