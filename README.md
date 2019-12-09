@@ -1,17 +1,7 @@
 # Spring Boot Master Class
 Understand and love the power of Spring Boot - All its features are illustrated developing a web application managing todos and a basic API for survey questionnaire. Also covers unit testing, mocking and integration testing.
 
-## Overview
-* [Installing Eclipse, Maven and Java](#installing-tools)
-* [Running Examples](#running-examples)
-* [Course Overview](#course-overview)
-  - [Course Steps](#step-list)
-  - [Expectations](#expectations)
-* [About in28Minutes](#about-in28minutes)
-  - [Our Beliefs](#our-beliefs)
-  - [Our Approach](#our-approach)
-  - [Find Us](#useful-links)
-  - [Other Courses](#other-courses)
+[![Image](https://www.springboottutorial.com/images/Course-Learn-Spring-Boot-in-100-Steps---Beginner-to-Expert.png "Learn Spring Boot in 100 Steps - Beginner to Expert")](https://www.udemy.com/course/spring-boot-tutorial-for-beginners/)
 
 ### Introduction
 
@@ -94,15 +84,6 @@ Refer each steps
 - You are all Set
 - For help : use our installation guide - https://www.youtube.com/playlist?list=PLBBog2r6uMCSmMVTW_QmDLyASBvovyAO3
 
-## About in28Minutes
-
-At in28Minutes, we ask ourselves one question everyday
-> How do we create more amazing course experiences? 
-> We use 80-20 Rule. We discuss 20% things used 80% of time in depth.
-
-We are creating amazing learning experiences for learning Spring Boot with AWS, Azure, GCP, Docker, Kubernetes and Full Stack. 300,000 Learners rely on our expertise.  [Find out more.... ](https://github.com/in28minutes/learn#best-selling-courses)
-
-![in28MinutesLearningRoadmap-July2019.png](https://github.com/in28minutes/in28Minutes-Course-Roadmap/raw/master/in28MinutesLearningRoadmap-July2019.png)
 
 ## Notes
 
@@ -113,19 +94,6 @@ Spring Boot Master Class - Preview
 Spring Boot Master Class - Course Overview
 Spring Boot Master Class - Git Repository
 Spring Boot Master Class - Installing Basic Tools
-
-
-Step 0 : Spring Boot in 10 Steps - Section Introduction
-Step 1 : Introduction to Spring Boot - Goals and Important Features
-Step 2 : Developing Spring Applications before Spring Boot
-Step 3 : Using Spring Initializr to create a Spring Boot Application
-Step 4 : Creating a Simple REST Controller
-Step 5 : What is Spring Boot Auto Configuration?
-Step 6 : Spring Boot vs Spring vs Spring MVC
-Step 7 : Spring Boot Starter Projects - Starter Web and Starter JPA
-Step 8 : Overview of different Spring Boot Starter Projects
-Step 9 : Spring Boot Actuator
-Step 10 : Spring Boot Developer Tools
 
 
 Step 0 : Web Application with Spring Boot - Section Introduction
@@ -215,3 +183,14 @@ Step 10 : Why is Spring Popular?
 
 Congratulations!
 ```
+
+### Troubleshooting
+- Refer our TroubleShooting Guide - https://github.com/in28minutes/in28minutes-initiatives/tree/master/The-in28Minutes-TroubleshootingGuide-And-FAQ
+
+## Youtube Playlists - 500+ Videos
+
+[Click here - 30+ Playlists with 500+ Videos on Spring, Spring Boot, REST, Microservices and the Cloud](https://www.youtube.com/user/rithustutorials/playlists?view=1&sort=lad&flow=list)
+
+## Keep Learning in28Minutes
+
+in28Minutes is creating amazing solutions for you to learn Spring Boot, Full Stack and the Cloud - Docker, Kubernetes, AWS, React, Angular etc. - [Check out all our courses here](https://github.com/in28minutes/learn)
