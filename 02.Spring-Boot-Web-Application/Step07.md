@@ -5,7 +5,7 @@
 First Snippet
 ```
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String showLoginPage(ModelMap model, @RequestParam String name) {
+    public String showLoginPage(ModelMap model) {
         return "login";
     }
 
