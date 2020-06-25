@@ -8,7 +8,7 @@
 ```     
 		<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-		<form:form method="post" commandName="todo">
+		<form:form method="post" modelAttribute="todo">
 			<fieldset class="form-group">
 				<form:label path="desc">Description</form:label>
 				<form:input path="desc" type="text" class="form-control" required="required"/>
