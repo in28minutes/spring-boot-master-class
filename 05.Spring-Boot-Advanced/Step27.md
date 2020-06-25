@@ -54,7 +54,9 @@ Second Snippet
 
 Third Snippet
 ```
-@WebMvcTest(value = SurveyController.class, secure = false)
+@WebMvcTest(value = SurveyController.class)
+@WithMockUser
+//OLD CODE - @WebMvcTest(value = SurveyController.class, secure = false)
 ```
 ## Files List
 ### pom.xml
