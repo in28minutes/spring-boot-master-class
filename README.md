@@ -13,6 +13,7 @@ Addning a line to check rebase in master branch.
 
 Spring Boot has a lot of magic is going the going for it.Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can “just run”. Most Spring Boot applications need very little Spring configuration.
 
+adding this line in master branch. By Naveen
 
 Developing applications with it is cool and fun.
 
