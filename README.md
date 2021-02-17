@@ -9,7 +9,9 @@ adding 3td linedsfffafafafa
 
 ### Introduction
 
+
 Spring Boot has a lot of magic is going the going for it.Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can “just run”. Most Spring Boot applications need very little Spring configuration.
+
 
 Developing applications with it is cool and fun.
 
