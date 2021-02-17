@@ -9,7 +9,7 @@ adding 3td linedsfffafafafa
 
 ### Introduction
 
-Spring Boot has a lot of magic going for it. 
+Spring Boot has a lot of magic going for it. Developing applications with it is cool and fun.
 
 Developing applications with it is cool and fun.
 
