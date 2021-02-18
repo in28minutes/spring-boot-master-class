@@ -1,11 +1,23 @@
 # Spring Boot Master Class
 Understand and love the power of Spring Boot - All its features are illustrated developing a web application managing todos and a basic API for survey questionnaire. Also covers unit testing, mocking and integration testing.
 
+adding a line
+addting 2nd line
+adding 3td linedsfffafafafa. Adding a line for rebasing
+sadas
+Adding this line in my feature branch to check rebase concept.
+addind a line in myfeature branch. By Naveen
+
+Hello
+
 [![Image](https://www.springboottutorial.com/images/Course-Learn-Spring-Boot-in-100-Steps---Beginner-to-Expert.png "Learn Spring Boot in 100 Steps - Beginner to Expert")](https://www.udemy.com/course/spring-boot-tutorial-for-beginners/)
 
 ### Introduction
 
-Spring Boot has a lot of magic going for it. 
+
+Spring Boot has a lot of magic is going the going for it.Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can “just run”. Most Spring Boot applications need very little Spring configuration.
+
+adding this line in master branch. By Naveen
 
 Developing applications with it is cool and fun.
 
