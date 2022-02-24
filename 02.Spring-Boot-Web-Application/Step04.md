@@ -205,3 +205,13 @@ Search for a view named "login"
 /login => LoginController 
 ```
 ---
+
+
+Note:
+Add below dependency if view resolver in not working.
+```
+<dependency>
+	<groupId>javax.servlet</groupId>
+	<artifactId>jstl</artifactId>
+</dependency>
+```
