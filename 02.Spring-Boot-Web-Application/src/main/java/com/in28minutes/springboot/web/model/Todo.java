@@ -7,6 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
+/**
+ * Since "user" is a reserved keyword in H2 database,
+ * we shouldn't use it as either table or column name.
+ **/
 @Entity
 public class Todo {
     
@@ -14,7 +18,7 @@ public class Todo {
 	@GeneratedValue
 	private int id;
     
-	private String user;
+	private String userName;
     
     @Size(min=10, message="Enter at least 10 Characters...")
     private String desc;
@@ -26,11 +30,11 @@ public class Todo {
     		super();
     }
     
-    public Todo(int id, String user, String desc, Date targetDate,
+    public Todo(int id, String userName, String desc, Date targetDate,
             boolean isDone) {
         super();
         this.id = id;
-        this.user = user;
+        this.userName = userName;
         this.desc = desc;
         this.targetDate = targetDate;
         this.isDone = isDone;
@@ -44,12 +48,12 @@ public class Todo {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getDesc() {
@@ -106,7 +110,7 @@ public class Todo {
     public String toString() {
         return String.format(
                 "Todo [id=%s, user=%s, desc=%s, targetDate=%s, isDone=%s]", id,
-                user, desc, targetDate, isDone);
+                userName, desc, targetDate, isDone);
     }
 
 }

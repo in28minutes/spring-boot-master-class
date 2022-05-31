@@ -28,7 +28,7 @@ public class UserRepositoryCommandLineRunner implements CommandLineRunner{
 		log.info("New User is created : " + user);
 		
 		Optional<User> userWithIdOne = userRepository.findById(1L);
-		log.info("User is retrived : " + userWithIdOne);
+		log.info("User is retrieved : " + userWithIdOne);
 
 		List<User> users = userRepository.findAll();
 		log.info("All Users : " + users);			

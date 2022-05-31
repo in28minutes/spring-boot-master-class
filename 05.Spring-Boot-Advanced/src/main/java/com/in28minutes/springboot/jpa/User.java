@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "USER_DETAILS") // Since User is a reserved keyword in H2 DB added alias table name as USER_DETAILS
 public class User {
 
 	@Id
