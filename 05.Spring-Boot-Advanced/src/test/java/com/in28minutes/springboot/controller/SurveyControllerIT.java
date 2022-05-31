@@ -103,7 +103,7 @@ public class SurveyControllerIT {
 			String password) {
 
 		String auth = userId + ":" + password;
-		// deprecated org.springframework.security.crypto.codec.Base64 with java.util.Base64
+		// deprecated `org.springframework.security.crypto.codec.Base64` and replaced with `java.util.Base64`
 		// replaced Charset.forName("US-ASCII") with StandardCharsets.US_ASCII)
 		byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes(StandardCharsets.US_ASCII));
 		String headerValue = "Basic " + new String(encodedAuth);

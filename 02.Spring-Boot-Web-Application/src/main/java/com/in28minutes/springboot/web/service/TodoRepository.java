@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.in28minutes.springboot.web.model.Todo;
 
 public interface TodoRepository extends JpaRepository<Todo, Integer>{
-	List<Todo> findByUserName(String userName);
+	List<Todo> findByUser(String userName);
 	
 	//service.retrieveTodos(name)
 

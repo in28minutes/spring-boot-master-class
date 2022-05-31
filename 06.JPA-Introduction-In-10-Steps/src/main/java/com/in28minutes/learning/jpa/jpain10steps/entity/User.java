@@ -6,10 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 //Table - User
-// "User" is a reserved keyword in H2 database hence changed the table name to "USER_DETAILS"
-// shouldn't be used it as table name or column either.
 @Entity
-@Table(name = "USER_DETAILS")
 public class User {
 
 	@Id
