@@ -1,15 +1,18 @@
 package com.in28minutes.springboot.controller;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 
+import com.in28minutes.springboot.Application;
+import com.in28minutes.springboot.model.Question;
 import org.json.JSONException;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -20,13 +23,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.codec.Base64;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.in28minutes.springboot.Application;
-import com.in28minutes.springboot.model.Question;
-
-@RunWith(SpringRunner.class)
+// replaced @RunWith with @ExtendWith
+// replaced SpringRunner.class with SpringExtension.class
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = Application.class,
 		webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SurveyControllerIT {
@@ -38,11 +39,11 @@ public class SurveyControllerIT {
 
 	HttpHeaders headers = new HttpHeaders();
 
-	@Before
+	@BeforeEach // replaced @Before with @BeforeEach from Junit5
 	public void before() {
 		headers.add("Authorization", createHttpAuthenticationHeaderValue(
 				"user1", "secret1"));
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+		headers.setAccept(List.of(MediaType.APPLICATION_JSON)); // replaced Arrays.asList with List.of
 	}
 
 	@Test
@@ -102,10 +103,9 @@ public class SurveyControllerIT {
 			String password) {
 
 		String auth = userId + ":" + password;
-
-		byte[] encodedAuth = Base64.encode(auth.getBytes(Charset
-				.forName("US-ASCII")));
-
+		// deprecated `org.springframework.security.crypto.codec.Base64` and replaced with `java.util.Base64`
+		// replaced Charset.forName("US-ASCII") with StandardCharsets.US_ASCII)
+		byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes(StandardCharsets.US_ASCII));
 		String headerValue = "Basic " + new String(encodedAuth);
 
 		return headerValue;
