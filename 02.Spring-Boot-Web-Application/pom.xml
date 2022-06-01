@@ -6,7 +6,7 @@
 	<groupId>com.in28minutes.springboot.web</groupId>
 	<artifactId>spring-boot-first-web-application-git</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>spring-boot-first-web-application</name>
 	<description>Demo project for Spring Boot</description>
