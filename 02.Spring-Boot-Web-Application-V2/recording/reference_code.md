@@ -1,6 +1,5 @@
 ## Complete Code Example
 
-
 ### /pom.xml
 
 ```xml
