@@ -1,4 +1,6 @@
-# Your First Web Application with Spring Boot
+# RECORDING IN PROGRESS
+
+In the meanwhile use V1 - https://github.com/in28minutes/spring-boot-master-class/tree/master/02.Spring-Boot-Web-Application
 
 Developing your first Spring Boot Web Application is fun.
 
