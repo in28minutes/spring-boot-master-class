@@ -1,5 +1,57 @@
 ## Complete Code Example
 
+- Constructor Injection!
+	- private final
+- We use ${todo.done} in JSP even though the name of the field in Todo.java is isDone
+
+## Feature Based Lectures
+
+- Q : How do I solve Errors related to Component Scan?
+- Q : Why does a Bean class not have @Component?
+- Spring Boot Starter Parent
+- Spring Boot Starter Web (Default Tomcat)
+- Embedded Servers: Jetty and Undertow
+- Logging
+- Maven:
+	- If you are using Milestone (M1, M2, M3...) or SNAPSHOT version you need this configuration
+
+
+## Todo after recording
+
+- Overview of Github Repo!
+- Update Installation Lectures for Java and JDK
+- Update Introduction Lecture to Section
+- Section: Functional Programming
+- MySQL Database
+- Docker
+
+```
+for (String name : applicationContext.getBeanDefinitionNames()) {
+			System.out.println(name);
+		}
+```
+
+### Structure
+
+```
+com
+ +- in28minutes
+     +- springboot
+         +- SpringBootApplication.java
+         |
+         +- login
+         |   +- User.java
+         |   +- LoginController.java
+         |   +- LoginService.java
+         |
+         +- todo
+             +- Todo.java
+             +- TodoController.java
+             +- TodoService.java
+             +- TodoRepository.java
+```
+
+
 ### /pom.xml
 
 ```xml
