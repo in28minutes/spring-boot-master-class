@@ -31,7 +31,11 @@ Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -97,10 +101,117 @@ public class MyfirstwebappApplication {
 ```
 ---
 
+### /src/main/java/com/in28minutes/springboot/myfirstwebapp/hello/SayHelloController.java
+
+```java
+package com.in28minutes.springboot.myfirstwebapp.hello;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class SayHelloController {
+	
+	//"say-hello" => "Hello! What are you learning today?"
+	
+	//say-hello
+	// http://localhost:8080/say-hello
+	@RequestMapping("say-hello")
+	@ResponseBody
+	public String sayHello() {
+		return "Hello! What are you learning today?";
+	}
+	
+	@RequestMapping("say-hello-html")
+	@ResponseBody
+	public String sayHelloHtml() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("<html>");
+		sb.append("<head>");
+		sb.append("<title> My First HTML Page - Changed</title>");
+		sb.append("</head>");
+		sb.append("<body>");
+		sb.append("My first html page with body - Changed");
+		sb.append("</body>");
+		sb.append("</html>");
+		
+		return sb.toString();
+	}
+	
+	//
+	// "say-hello-jsp" => sayHello.jsp 
+	// /src/main/resources/META-INF/resources/WEB-INF/jsp/sayHello.jsp
+	// /src/main/resources/META-INF/resources/WEB-INF/jsp/welcome.jsp
+	// /src/main/resources/META-INF/resources/WEB-INF/jsp/login.jsp
+	// /src/main/resources/META-INF/resources/WEB-INF/jsp/todos.jsp
+	@RequestMapping("say-hello-jsp")
+	public String sayHelloJsp() {
+		return "sayHello";
+	}
+}
+```
+---
+
+### /src/main/java/com/in28minutes/springboot/myfirstwebapp/login/LoginController.java
+
+```java
+package com.in28minutes.springboot.myfirstwebapp.login;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller
+public class LoginController {
+	
+	///login => com.in28minutes.springboot.myfirstwebapp.login.LoginController => login.jsp
+	
+	@RequestMapping("login")
+	public String gotoLoginPage() {
+		return "login";
+	}
+}
+```
+---
+
+### /src/main/resources/META-INF/resources/WEB-INF/jsp/login.jsp
+
+```
+<html>
+	<head>
+		<title> Login Page</title>
+	</head>
+	<body>
+		Welcome to the login page!
+	</body>
+</html>
+```
+---
+
+### /src/main/resources/META-INF/resources/WEB-INF/jsp/sayHello.jsp
+
+```
+<html>
+	<head>
+		<title> My first HTML Page - JSP</title>
+	</head>
+	<body>
+		My first html page with body - JSP
+	</body>
+</html>
+```
+---
+
 ### /src/main/resources/application.properties
 
 ```properties
 #server.port=8081
+#sayHello.jsp
+#/WEB-INF/jsp/sayHello.jsp
+spring.mvc.view.prefix=/WEB-INF/jsp/
+spring.mvc.view.suffix=.jsp
+logging.level.org.springframework=debug
 ```
 ---
 

@@ -1,3 +1,13 @@
+<!---
+Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-class/02.Spring-Boot-Web-Application-V2
+-->
+
+## Complete Code Example
+
+
+### /pom.xml
+
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -21,11 +31,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-			<scope>provided</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -69,3 +75,76 @@
 	</pluginRepositories>
 
 </project>
+```
+---
+
+### /src/main/java/com/in28minutes/springboot/myfirstwebapp/MyfirstwebappApplication.java
+
+```java
+package com.in28minutes.springboot.myfirstwebapp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MyfirstwebappApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MyfirstwebappApplication.class, args);
+	}
+
+}
+```
+---
+
+### /src/main/java/com/in28minutes/springboot/myfirstwebapp/hello/SayHelloController.java
+
+```java
+package com.in28minutes.springboot.myfirstwebapp.hello;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class SayHelloController {
+	
+	//"say-hello" => "Hello! What are you learning today?"
+	
+	//say-hello
+	// http://localhost:8080/say-hello
+	@RequestMapping("say-hello")
+	@ResponseBody
+	public String sayHello() {
+		return "Hello! What are you learning today?";
+	}
+
+}
+```
+---
+
+### /src/main/resources/application.properties
+
+```properties
+#server.port=8081
+```
+---
+
+### /src/test/java/com/in28minutes/springboot/myfirstwebapp/MyfirstwebappApplicationTests.java
+
+```java
+package com.in28minutes.springboot.myfirstwebapp;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class MyfirstwebappApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+```
+---

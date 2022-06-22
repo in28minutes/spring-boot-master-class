@@ -1,10 +1,10 @@
-package com.in28minutes.springboot.web;
+package com.in28minutes.springboot.myfirstwebapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootFirstWebApplicationTests {
+class MyfirstwebappApplicationTests {
 
 	@Test
 	void contextLoads() {
