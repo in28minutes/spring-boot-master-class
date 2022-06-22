@@ -4,6 +4,13 @@ In the meanwhile use V1 - https://github.com/in28minutes/spring-boot-master-clas
 
 Developing your first Spring Boot Web Application is fun.
 
+### Todo
+- Lombok
+- Functional Programming
+- Docker
+- JPA section
+- Which Java Version to Use?
+
 ### Step Wise Details
 - Step 01: Basic Spring Boot Web Application Setup
 - Step 02: First Spring MVC Controller, @ResponseBody, @Controller
