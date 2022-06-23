@@ -1,5 +1,6 @@
 # Getting Started
 
+
 ## HTML
 
 ```
@@ -41,6 +42,51 @@ B3: Identifies correct View
 /WEB-INF/jsp/login.jsp
 
 B4: Executes view
+
+
+## Todo
+
+id
+username
+description
+targetDate
+done
+
+TodoController
+listTodos.jsp
+
+## Request vs Model vs Session
+
+- Request
+- Model
+- Session
+
+## Validations
+- Client Side vs Server Side
+- 1: spring-boot-starter-validation
+- 2: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
