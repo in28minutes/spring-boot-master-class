@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes("name")
 public class LoginController {
-	
+
 	private AuthenticationService authenticationService;
 	
 	public LoginController(AuthenticationService authenticationService) {

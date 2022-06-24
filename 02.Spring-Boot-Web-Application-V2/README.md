@@ -5,11 +5,14 @@ In the meanwhile use V1 - https://github.com/in28minutes/spring-boot-master-clas
 Developing your first Spring Boot Web Application is fun.
 
 ### Todo
+- Spring Initializr Lecture
 - Lombok
 - Functional Programming
 - Docker
 - JPA section
 - Which Java Version to Use?
+- Topical videos (HTML, JS, CSS, JSTL, Spring Tags)
+- My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v)
 
 ### Step Wise Details
 - Step 01: Basic Spring Boot Web Application Setup
