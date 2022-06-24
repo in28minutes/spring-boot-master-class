@@ -1,8 +1,24 @@
-# RECORDING IN PROGRESS
-
-In the meanwhile use V1 - https://github.com/in28minutes/spring-boot-master-class/tree/master/02.Spring-Boot-Web-Application
+# Web Application with Spring Boot
 
 Developing your first Spring Boot Web Application is fun.
+
+### Navigation - HTML + Bootstrap
+
+```
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
+	<a class="navbar-brand m-1" href="https://courses.in28minutes.com">in28Minutes</a>
+	<div class="collapse navbar-collapse">
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="/list-todos">Todos</a></li>
+		</ul>
+	</div>
+	<ul class="navbar-nav">
+		<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+	</ul>	
+</nav>
+```
+
 
 ### Todo
 - Spring Initializr Lecture
@@ -12,7 +28,7 @@ Developing your first Spring Boot Web Application is fun.
 - JPA section
 - Which Java Version to Use?
 - Topical videos (HTML, JS, CSS, JSTL, Spring Tags)
-- My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v)
+- My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v), ctrl shift r and ctrl shift t
 
 ### Step Wise Details
 - Step 01: Basic Spring Boot Web Application Setup
