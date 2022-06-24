@@ -628,7 +628,7 @@ public class TodoService {
 		<script src="webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 		<script type="text/javascript">
 			$('#targetDate').datepicker({
-			    format: 'dd/mm/yyyy'
+			    format: 'yyyy-mm-dd'
 			});
 		</script>
 						
@@ -666,6 +666,8 @@ spring.mvc.view.prefix=/WEB-INF/jsp/
 spring.mvc.view.suffix=.jsp
 logging.level.org.springframework=info
 logging.level.com.in28minutes.springboot.myfirstwebapp=info
+
+spring.mvc.format.date=yyyy-MM-dd
 ```
 ---
 
