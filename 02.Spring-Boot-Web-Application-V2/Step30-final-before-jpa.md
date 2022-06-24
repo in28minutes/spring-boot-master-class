@@ -1,5 +1,5 @@
 <!---
-Current Directory : /Ranga/001.Notes/00.CoursePreparations/2022-06-Spring-Boot-Upgrade-Code/code-1-24-june
+Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-class/02.Spring-Boot-Web-Application-V2
 -->
 
 ## Complete Code Example
@@ -9,13 +9,14 @@ Current Directory : /Ranga/001.Notes/00.CoursePreparations/2022-06-Spring-Boot-U
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.0-M3</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.in28minutes.springboot</groupId>
 	<artifactId>myfirstwebapp</artifactId>
@@ -31,16 +32,18 @@ Current Directory : /Ranga/001.Notes/00.CoursePreparations/2022-06-Spring-Boot-U
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
@@ -52,12 +55,12 @@ Current Directory : /Ranga/001.Notes/00.CoursePreparations/2022-06-Spring-Boot-U
 			<groupId>jakarta.servlet.jsp.jstl</groupId>
 			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>glassfish-jstl</artifactId>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
@@ -69,14 +72,14 @@ Current Directory : /Ranga/001.Notes/00.CoursePreparations/2022-06-Spring-Boot-U
 			<artifactId>jquery</artifactId>
 			<version>3.6.0</version>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap-datepicker</artifactId>
 			<version>1.9.0</version>
 		</dependency>
 
-
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -194,28 +197,7 @@ public class SayHelloController {
 ```
 ---
 
-### /src/main/java/com/in28minutes/springboot/myfirstwebapp/login/AuthenticationService.java
-
-```java
-package com.in28minutes.springboot.myfirstwebapp.login;
-
-import org.springframework.stereotype.Service;
-
-@Service
-public class AuthenticationService {
-	
-	public boolean authenticate(String username, String password) {
-		
-		boolean isValidUserName = username.equalsIgnoreCase("in28minutes");
-		boolean isValidPassword = password.equalsIgnoreCase("dummy");
-		
-		return isValidUserName && isValidPassword;
-	}
-}
-```
----
-
-### /src/main/java/com/in28minutes/springboot/myfirstwebapp/login/LoginController.java
+### /src/main/java/com/in28minutes/springboot/myfirstwebapp/login/WelcomeController.java
 
 ```java
 package com.in28minutes.springboot.myfirstwebapp.login;
@@ -226,99 +208,77 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @SessionAttributes("name")
-public class LoginController {
-
-	private AuthenticationService authenticationService;
-	
-	public LoginController(AuthenticationService authenticationService) {
-		super();
-		this.authenticationService = authenticationService;
-	}
+public class WelcomeController {
 
 	@RequestMapping(value="/",method = RequestMethod.GET)
-	public String gotoLoginPage(ModelMap model) {
-		model.put("name","in28minutes");
+	public String gotoWelcomePage(ModelMap model) {
+		model.put("name", getLoggedinUsername());
 		return "welcome";
 	}
-
-	@RequestMapping(value="login",method = RequestMethod.POST)
-	//login?name=Ranga RequestParam
-	public String gotoWelcomePage(@RequestParam String name, 
-			@RequestParam String password, ModelMap model) {
-		
-		if(authenticationService.authenticate(name, password)) {
-		
-			model.put("name", name);
-			//Authentication 
-			//name - in28minutes
-			//password - dummy
-			
-			return "welcome";
-		}
-		
-		model.put("errorMessage", "Invalid Credentials! Please try again.");
-		return "login";
-	}
 	
-	public String getLoggedinusername() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String loggedinUsername = authentication.getName();
-		return loggedinUsername;
+	private String getLoggedinUsername() {
+		Authentication authentication = 
+				SecurityContextHolder.getContext().getAuthentication();
+		return authentication.getName();
 	}
 }
 ```
 ---
 
-### /src/main/java/com/in28minutes/springboot/myfirstwebapp/todo/SecurityConfiguration.java
+### /src/main/java/com/in28minutes/springboot/myfirstwebapp/security/SpringSecurityConfiguration.java
 
 ```java
-@Configuration
-public class SecurityConfiguration {
-    @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-    	
-    	Function<String, String> encoder = input -> passwordEncoder().encode(input);
-		
-    	UserDetails user = User.builder().passwordEncoder(
-    			encoder
-    			)
-            .username("in28minutes")
-            .password("dummy")
-            .roles("USER")
-            .build();
-        return new InMemoryUserDetailsManager(user);
-    }
-    
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    } 
-}
+package com.in28minutes.springboot.myfirstwebapp.security;
 
-package com.in28minutes.springboot.myfirstwebapp.todo;
+import java.util.function.Function;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
-public class SecurityConfiguration {
-    @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails user = User.withDefaultPasswordEncoder()
-            .username("in28minutes")
-            .password("dummy")
-            .roles("USER")
-            .build();
-        return new InMemoryUserDetailsManager(user);
-    }
+public class SpringSecurityConfiguration {
+	//LDAP or Database
+	//In Memory 
+	
+	//InMemoryUserDetailsManager
+	//InMemoryUserDetailsManager(UserDetails... users)
+	
+	@Bean
+	public InMemoryUserDetailsManager createUserDetailsManager() {
+		
+		UserDetails userDetails1 = createNewUser("in28minutes", "dummy");
+		UserDetails userDetails2 = createNewUser("ranga", "dummydummy");
+		
+		return new InMemoryUserDetailsManager(userDetails1, userDetails2);
+	}
+
+	private UserDetails createNewUser(String username, String password) {
+		Function<String, String> passwordEncoder
+		= input -> passwordEncoder().encode(input);
+
+		UserDetails userDetails = User.builder()
+									.passwordEncoder(passwordEncoder)
+									.username(username)
+									.password(password)
+									.roles("USER","ADMIN")
+									.build();
+		return userDetails;
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
 }
 ```
 ---
@@ -409,7 +369,6 @@ public class Todo {
 ```java
 package com.in28minutes.springboot.myfirstwebapp.todo;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -418,8 +377,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -430,7 +387,7 @@ import jakarta.validation.Valid;
 @Controller
 @SessionAttributes("name")
 public class TodoController {
-		
+	
 	public TodoController(TodoService todoService) {
 		super();
 		this.todoService = todoService;
@@ -442,20 +399,12 @@ public class TodoController {
 	@RequestMapping("list-todos")
 	public String listAllTodos(ModelMap model) {
 		String username = getLoggedInUsername(model);
-		System.out.println(username);
 		List<Todo> todos = todoService.findByUsername(username);
 		model.addAttribute("todos", todos);
 		
 		return "listTodos";
 	}
 
-	private String getLoggedInUsername(ModelMap model) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String loggedinUsername = authentication.getName();
-		return loggedinUsername;
-		//return (String)model.get("name");
-	}
-	
 	//GET, POST
 	@RequestMapping(value="add-todo", method = RequestMethod.GET)
 	public String showNewTodoPage(ModelMap model) {
@@ -506,6 +455,13 @@ public class TodoController {
 		todoService.updateTodo(todo);
 		return "redirect:list-todos";
 	}
+
+	private String getLoggedInUsername(ModelMap model) {
+		Authentication authentication = 
+				SecurityContextHolder.getContext().getAuthentication();
+		return authentication.getName();
+	}
+
 }
 ```
 ---
@@ -541,9 +497,8 @@ public class TodoService {
 	}
 	
 	public List<Todo> findByUsername(String username){
-		System.out.println(todos);
-		System.out.println(username);
-		Predicate<? super Todo> predicate = todo -> todo.getUsername().equalsIgnoreCase(username);
+		Predicate<? super Todo> predicate = 
+				todo -> todo.getUsername().equalsIgnoreCase(username);
 		return todos.stream().filter(predicate).toList();
 	}
 	
@@ -576,11 +531,10 @@ public class TodoService {
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/common/footer.jspf
 
 ```
-		<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-		<script src="webjars/jquery/3.6.0/jquery.min.js"></script>		
-		<script
-			src="webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
-		
+<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+		<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
+		<script src="webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+						
 	</body>
 </html>
 ```
@@ -590,15 +544,17 @@ public class TodoService {
 
 ```
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 
 <html>
 	<head>
 		<link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" >
-		<title>Add Todo Page</title>		
+		<link href="webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet" >
+		
+		<title>Manage Your Todos</title>		
 	</head>
 	<body>
-
 ```
 ---
 
@@ -606,7 +562,7 @@ public class TodoService {
 
 ```
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
-	<a class="navbar-brand m-1" href="https://courses.in28minutes.com">in28Minutes</a>
+	<a class="navbar-brand m-1" href="https://courses.in28minutes.com">in28minutes</a>
 	<div class="collapse navbar-collapse">
 		<ul class="navbar-nav">
 			<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
@@ -623,15 +579,13 @@ public class TodoService {
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/listTodos.jsp
 
 ```
-<%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
-
+<%@ include file="common/header.jspf" %>
+<%@ include file="common/navigation.jspf" %>	
 <div class="container">
 	<h1>Your Todos</h1>
 	<table class="table">
 		<thead>
 			<tr>
-				<th>id</th>
 				<th>Description</th>
 				<th>Target Date</th>
 				<th>Is Done?</th>
@@ -642,14 +596,11 @@ public class TodoService {
 		<tbody>		
 			<c:forEach items="${todos}" var="todo">
 				<tr>
-					<td>${todo.id}</td>
 					<td>${todo.description}</td>
 					<td>${todo.targetDate}</td>
 					<td>${todo.done}</td>
-					<td><a class="btn btn-success"
-				href="/update-todo?id=${todo.id}">Update</a></td>
-					<td><a class="btn btn-warning"
-						href="/delete-todo?id=${todo.id}">Delete</a></td>
+					<td> <a href="delete-todo?id=${todo.id}" class="btn btn-warning">Delete</a>   </td>
+					<td> <a href="update-todo?id=${todo.id}" class="btn btn-success">Update</a>   </td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -657,31 +608,7 @@ public class TodoService {
 	<a href="add-todo" class="btn btn-success">Add Todo</a>
 </div>
 
-<%@ include file="common/footer.jspf"%>
-```
----
-
-### /src/main/resources/META-INF/resources/WEB-INF/jsp/login.jsp
-
-```
-<html>
-	<head>
-		<title>Login Page</title>
-	</head>
-	<body>
-	
-		<div class="container">
-			<h1>Login</h1>
-			<pre>${errorMessage}</pre>
-			<form method="post">
-				Name: <input type="text" name="name">
-				Password: <input type="password" name="password">
-				<input type="submit">
-			</form>
-		</div>
-		 
-	</body>
-</html>
+<%@ include file="common/footer.jspf" %>
 ```
 ---
 
@@ -705,63 +632,60 @@ public class TodoService {
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/todo.jsp
 
 ```
-<%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
-
+<%@ include file="common/header.jspf" %>
+<%@ include file="common/navigation.jspf" %>	
 
 <div class="container">
+	
 	<h1>Enter Todo Details</h1>
+	
 	<form:form method="post" modelAttribute="todo">
-		<fieldset class="mb-3">
+
+		<fieldset class="mb-3">				
 			<form:label path="description">Description</form:label>
-			<form:input type="text" path="description" />
-			<form:errors path="description" cssClass="text-warning" />
+			<form:input type="text" path="description" required="required"/>
+			<form:errors path="description" cssClass="text-warning"/>
 		</fieldset>
 
-		<fieldset class="mb-3">
+		<fieldset class="mb-3">				
 			<form:label path="targetDate">Target Date</form:label>
-			<form:input type="text" path="targetDate" />
-			<form:errors path="targetDate" cssClass="text-warning" />
+			<form:input type="text" path="targetDate" required="required"/>
+			<form:errors path="targetDate" cssClass="text-warning"/>
 		</fieldset>
 
-		<input type="submit" class="btn btn-success" />
+		
+		<form:input type="hidden" path="id"/>
 
-		<form:input type="hidden" path="id" />
+		<form:input type="hidden" path="done"/>
 
-		<form:input type="hidden" path="done" />
-
-		<form:errors path="*"></form:errors>
-
+		<input type="submit" class="btn btn-success"/>
+	
 	</form:form>
-
-
+	
 </div>
 
+<%@ include file="common/footer.jspf" %>
 
-<%@ include file="common/footer.jspf"%>
-
-		<script>
-			$('#targetDate').datepicker({
-				format : 'yyyy-mm-dd'
-			});
-		</script>
+<script type="text/javascript">
+	$('#targetDate').datepicker({
+	    format: 'yyyy-mm-dd'
+	});
+</script>
 ```
 ---
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/welcome.jsp
 
 ```
-<%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
+<%@ include file="common/header.jspf" %>
+<%@ include file="common/navigation.jspf" %>	
 
-<body>
-	<div class="container">
-		<h1>Welcome ${name}</h1>
-		<a href="list-todos">Manage</a> your todos
-	</div>
-</body>
+<div class="container">
+	<h1>Welcome ${name}</h1>
+	<a href="list-todos">Manage</a> your todos
+</div>
 
-<%@ include file="common/footer.jspf"%>
+<%@ include file="common/footer.jspf" %>
 ```
 ---
 
