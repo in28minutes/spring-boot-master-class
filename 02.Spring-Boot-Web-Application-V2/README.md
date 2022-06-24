@@ -20,13 +20,14 @@ Developing your first Spring Boot Web Application is fun.
 ```
 
 ### Docker
-```
+
 Launch MySQL using Docker
-
+```
 docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=todos-user --env MYSQL_PASSWORD=dummytodos --env MYSQL_DATABASE=todos --name mysql --publish 3306:3306 mysql:8-oracle
-
+```
 application.properties configuration
 
+```
 #spring.datasource.url=jdbc:h2:mem:testdb
 
 spring.jpa.hibernate.ddl-auto=update
@@ -36,23 +37,22 @@ spring.datasource.password=dummytodos
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 
 #todos-user@localhost:3306
-
+```
 
 mysqlsh commands
-
+```
 mysqlsh
 \connect todos-user@localhost:3306
 \sql
 use todos
 select * from todo;
 \quit
-
+```
 
 Docker Commands
-
+```
 docker container ls
 docker container stop ID
-
 ```
 
 
