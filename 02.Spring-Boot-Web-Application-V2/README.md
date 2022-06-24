@@ -19,6 +19,32 @@ Developing your first Spring Boot Web Application is fun.
 </nav>
 ```
 
+## Spring Security
+
+```
+@Configuration
+public class SecurityConfiguration {
+    @Bean
+    public InMemoryUserDetailsManager userDetailsService() {
+    	
+    	Function<String, String> encoder = input -> passwordEncoder().encode(input);
+		
+    	UserDetails user = User.builder().passwordEncoder(
+    			encoder
+    			)
+            .username("in28minutes")
+            .password("dummy")
+            .roles("USER")
+            .build();
+        return new InMemoryUserDetailsManager(user);
+    }
+    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    } 
+}
+```
 
 ### Todo
 - Spring Initializr Lecture
