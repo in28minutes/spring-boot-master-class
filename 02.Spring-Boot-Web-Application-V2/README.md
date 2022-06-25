@@ -92,6 +92,8 @@ public class SecurityConfiguration {
 - Which Java Version to Use?
 - Topical videos (HTML, JS, CSS, JSTL, Spring Tags)
 - My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v), ctrl shift r and ctrl shift t
+- Spring Annotations - Component, Controller, Repository, Service, Configuration, Bean
+- JDBC to JPA
 
 ### Step Wise Details
 - Step 01: Basic Spring Boot Web Application Setup
