@@ -32,17 +32,6 @@ Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -54,6 +43,7 @@ Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
@@ -244,19 +234,15 @@ public class WelcomeController {
 ```java
 package com.in28minutes.springboot.myfirstwebapp.security;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 import java.util.function.Function;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SpringSecurityConfiguration {
@@ -293,28 +279,6 @@ public class SpringSecurityConfiguration {
 		return new BCryptPasswordEncoder();
 	}
 	
-	//All URLs are protected
-	//A login form is shown for unauthorized requests
-	//CSRF disable
-	//Frames
-	
-	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		
-		http.authorizeHttpRequests(
-				auth -> auth.anyRequest().authenticated());
-		http.formLogin(withDefaults());
-		
-		http.csrf().disable();
-		http.headers().frameOptions().disable();
-		
-		return http.build();
-	}
-	
-	
-	
-	
-	
 }
 ```
 ---
@@ -326,18 +290,11 @@ package com.in28minutes.springboot.myfirstwebapp.todo;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
 //Database (MySQL) 
 //Static List of todos => Database (H2, MySQL)
 
-//JPA
-// Bean -> Database Table
-
-@Entity
 public class Todo {
 
 	public Todo(int id, String username, String description, LocalDate targetDate, boolean done) {
@@ -349,10 +306,7 @@ public class Todo {
 		this.done = done;
 	}
 
-	@Id
-	@GeneratedValue
 	private int id;
-
 	private String username;
 	
 	@Size(min=10, message="Enter atleast 10 characters")
@@ -749,26 +703,6 @@ logging.level.org.springframework=info
 logging.level.com.in28minutes.springboot.myfirstwebapp=info
 
 spring.mvc.format.date=yyyy-MM-dd
-
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.jpa.defer-datasource-initialization=true
-```
----
-
-### /src/main/resources/data.sql
-
-```
-insert into todo (ID, USERNAME, DESCRIPTION, TARGET_DATE, DONE)
-values(10001,'in28minutes', 'Get AWS Certified', CURRENT_DATE(), false);
-
-insert into todo (ID, USERNAME, DESCRIPTION, TARGET_DATE, DONE)
-values(10002,'in28minutes', 'Get Azure Certified', CURRENT_DATE(), false);
-
-insert into todo (ID, USERNAME, DESCRIPTION, TARGET_DATE, DONE)
-values(10003,'in28minutes', 'Get GCP Certified', CURRENT_DATE(), false);
-
-insert into todo (ID, USERNAME, DESCRIPTION, TARGET_DATE, DONE)
-values(10004,'in28minutes', 'Learn DevOps', CURRENT_DATE(), false);
 ```
 ---
 

@@ -55,6 +55,9 @@ docker container ls
 docker container stop ID
 ```
 
+## Installation
+
+https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-install.html
 
 ## Spring Security
 
@@ -87,106 +90,82 @@ public class SecurityConfiguration {
 - Spring Initializr Lecture
 - Lombok
 - Functional Programming
-- Docker
+- Docker Installation (Editing)
 - JPA section
 - Which Java Version to Use?
 - Topical videos (HTML, JS, CSS, JSTL, Spring Tags)
-- My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v), ctrl shift r and ctrl shift t
+- Lecture: My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v), ctrl shift r and ctrl shift t, ctrl click to see the source! Practice, Practice and Practice
+- Lecture: Understand Spring Boot Project Structure!
+- Make html content available as text lecture!
+- Rename Steps in code backups
+- BUG ALERT: Replace Hardcoded LocalDate.now().plusYears(1) in addNewTodo with todo.getTargetDate()
+- Editing: Folder Structure
+- Editing: Creating New Files
+- Editing: If X-Frame-Options is enabled in headers, website cannot use frames. We disable it so that h2-console can use frames.
+- Editing: SecurityFilterChain: Defines a filter chain matched against every request
+- Editing: When we override SecurityFilterChain, we need to define entire chain again!
+- Editing: @Valid in TodoService (public void updateTodo(@Valid Todo todo) { deleteById(todo.getId());)
+- Lecture: Magic of JPA - Show the generated queries!
+- Lecture Rerecord: Target Date Lecture
+- MySQL instructions
+- Editing: toString method is called on the Todo object
 
 ### Step Wise Details
-- Step 01: Basic Spring Boot Web Application Setup
-- Step 02: First Spring MVC Controller, @ResponseBody, @Controller
-- Step 03: Demystifying some of the Spring Boot magic
-- Step 04: Redirect to Login JSP - LoginController, @ResponseBody and View Resolver
-- Step 05: Show userid and password on the welcome page - ModelMap and @RequestParam
-- Step 06: DispatcherServlet and Spring MVC Flow
-- Step 07: Your First HTML form
-- Step 08: Add hard-coded validation of userid and password
-- Step 09: Magic of Spring
-- Step 10: Create TodoController and list-todos view. Make TodoService a @Service and inject it.
-- Step 11: Architecture of Web Applications
-- Step 12: Session vs Model vs Request - @SessionAttributes
-- Step 13: Add new todo
-- Step 14: Display Todos in a table using JSTL Tags
-- Step 15: Bootstrap for Page Formatting using webjars
-- Step 16: Let's delete a Todo
-- Step 17: Format Add Todo Page and Adding Basic HTML5 form validation
-- Step 18: Introduce JSR 349 Validations using Hibernate Validator - First Command Bean.
-- Step 19: Updating a todo
-- Step 20: Let's add a Target Date for Todo - Use initBinder to Handle Date Fields
-- Step 21: JSP Fragments and Navigation Bar
-- Step 22: Preparing for Spring Security
-- Step 23: Initial Spring Security Setup
-- Step 24: Refactor and add Logout Functionality using Spring Security
-- Step 25: Exception Handling
+- Step 01 - Creating Spring Boot Web Application with Spring Initializr
+- Step 02 - Quick overview of Spring Boot Project
+- Step 03 - First Spring MVC Controller, @ResponseBody, @Controller
+- Step 04 - Enhancing Spring MVC Controller to provide HTML response
+- Step 05 - Redirect to a JSP using Spring Boot - Controller, @ResponseBody and View Resolver
+- Step 06 - Exercise - Creating LoginController and login view
+- Step 07 - Quick Overview - How does web work - Request and Response
+- Step 08 - Capturing QueryParams using RequestParam and First Look at Model
+- Step 09 - Quick Overview - Importance of Logging with Spring Boot
+- Step 10 - Understanding DispatcherServlet, Model 1, Model 2 and Front Controller
+- Step 11 - Creating a Login Form
+- Step 12 - Displaying Login Credentials in a JSP using Model
+- Step 13 - Add hard-coded validation of userid and password
+- Step 14 - Getting started with Todo Features - Creating Todo and TodoService
+- Step 15 - Creating first version of List Todos Page
+- Step 16 - Understanding Session vs Model vs Request - @SessionAttributes
+- Step 17 - Adding JSTL to Spring Boot Project and Showing Todos in a Table
+- Step 18 - Adding Bootstrap CSS framework to Spring Boot Project using webjars
+- Step 19 - Formatting JSP pages with Bootstrap CSS framework
+- Step 20 - Lets Add a New Todo - Create a new View
+- Step 21 - Enhancing TodoService to add the todo
+- Step 22 - Adding Validations using Spring Boot Starter Validation
+- Step 23 - Using Command Beans to implement New Todo Page Validations
+- Step 24 - Implementing Delete Todo Feature - New View
+- Step 25 - Implementing Update Todo - 1 - Show Update Todo Page
+- Step 26 - Implementing Update Todo - 1 - Save changes to Todo
+- Step 27 - Adding Target Date Field to Todo Page
+- Step 28 - Adding a Navigation Bar and Implementing JSP Fragments
+- Step 29 - Preparing for Spring Security
+- Step 30 - Setting up Spring Security with Spring Boot Starter Security
+- Step 31 - Configuring Spring Security with Custom User and Password Encoder
+- Step 32 - Refactoring and Removing Hardcoding of User Id
+- Step 33 - Setting up a New User for Todo Application
+- Step 34 - Adding Spring Boot Starter Data JPA and Getting H2 database ready
+- Step 35 - Configuring Spring Security to Get H2-console Working
+- Step 36 - Making Todo an Entity and Population Todo Data into H2
+- Step 37 - Creating TodoRepository and Connecting List Todos page from H2 database
+- Step 38 - Connecting All Todo App Features to H2 Database
+- Step 39 - OPTIONAL - Overview of Connecting Todo App to MySQL database
+- Step 40 - OPTIONAL - Installing Docker
+- Step 41 - OPTIONAL - Connecting Todo App to MySQL database
 
-##### After Completing "Introduction to JPA"
 
-- Step 26: Adding Dependencies for JPA and H2
-- Step 27: Configuring H2 Console
-- Step 28: Create Todo Entity and JPA Repository
-- Step 29: Insert Todo using JPA Repository
-- Step 30: Update, Delete and Retrieve Todos using JPA Repository
-- Step 31: Data initialization with data.sql
-- Step 32: Connecting JPA to other databases
-- Step 33: Upgrading to Spring Boot 2 and Spring 5
-
-## Installing and Setting Up MySQL
-
-- Install MySQL https://dev.mysql.com/doc/en/installing.html
-  - More details : http://www.mysqltutorial.org/install-mysql/
-  - Trouble Shooting - https://dev.mysql.com/doc/refman/en/problems.html
-- Startup the Server (as a service)
-- Go to command prompt (or terminal)
-   - Execute following commands to create a database and a user
-
+## Renaming files while recording
 ```
-mysql --user=user_name --password db_name
-create database todo_example;
-create user 'todouser'@'localhost' identified by 'YOUR_PASSWORD';
-grant all on todo_example.* to 'todouser'@'localhost';
+Step17 -> Step19
+Step22 -> Step25
+Step23 -> Step26
+Step24 -> Step27
+Step25 -> Step28
+Step26 -> Step29
+Step28 -> Step31
+Step30 -> Step33
+Step32 -> Step35
+Step33 -> Step36
+Step36 -> Step38
+Step38 -> Step41
 ```
-
-- Execute following sql queries to create the table and insert the data
-
-Table
-```sql
-create table todo 
-(id integer not null, 
-desc varchar(255), 
-is_done boolean not null, 
-target_date timestamp, 
-user varchar(255), 
-primary key (id));
-```
-
-Data
-```sql
-INSERT INTO TODO
-VALUES(10001, 'Learn Spring Boot', false, sysdate(),'in28Minutes');
-
-INSERT INTO TODO
-VALUES(10002, 'Learn RESTful Web Services', false, sysdate(),'in28Minutes');
-
-INSERT INTO TODO
-VALUES(10003, 'Learn SOAP Web Services', false, sysdate(),'in28Minutes');
-```
-
-## Code changes to connect to MySQL
-- Add dependency to pom.xml (and remove H2 dependency)
-```xml
-<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-</dependency>
-```
-- Configure application.properties
-
-```properties
-spring.jpa.hibernate.ddl-auto=none
-spring.datasource.url=jdbc:mysql://localhost:3306/todo_example
-spring.datasource.username=todouser
-spring.datasource.password=YOUR_PASSWORD
-```
-
-- Restart and You are ready!
