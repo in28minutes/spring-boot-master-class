@@ -87,31 +87,33 @@ public class SecurityConfiguration {
 ```
 
 ### Todo
-- Spring Initializr Lecture
-- Lombok
-- Functional Programming
-- Docker Installation (Editing)
-- JPA section
-- Which Java Version to Use?
-- Topical videos (HTML, JS, CSS, JSTL, Spring Tags)
-- Lecture: My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v), ctrl shift r and ctrl shift t, ctrl click to see the source! Practice, Practice and Practice
-- Lecture: Understand Spring Boot Project Structure!
-- Make html content available as text lecture!
-- Rename Steps in code backups
-- BUG ALERT: Replace Hardcoded LocalDate.now().plusYears(1) in addNewTodo with todo.getTargetDate()
-- Editing: Folder Structure
-- Editing: Creating New Files
-- Editing: If X-Frame-Options is enabled in headers, website cannot use frames. We disable it so that h2-console can use frames.
-- Editing: SecurityFilterChain: Defines a filter chain matched against every request
-- Editing: When we override SecurityFilterChain, we need to define entire chain again!
-- Editing: @Valid in TodoService (public void updateTodo(@Valid Todo todo) { deleteById(todo.getId());)
+
+- Lecture: Spring Initializr Lecture
+- Lecture: Topical Videos (HTML, JS, CSS, JSTL, Spring Tags)
+- Lecture: 99-step-by-step-changes.md
+- Lecture: Functional Programming Basics (30 minutes intro to Functional Programming)
 - Lecture: Magic of JPA - Show the generated queries!
 - Lecture Rerecord: Target Date Lecture
-- MySQL instructions
+    - BUG ALERT: Replace Hardcoded LocalDate.now().plusYears(1) in addNewTodo with todo.getTargetDate()
+- Editing: Refer "Functional Programming in 30 Minutes" for a quick intro to Functional Programming
+- Editing: Folder Structure
+- Editing: Creating New Files
 - Editing: toString method is called on the Todo object
-- My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v), ctrl shift r and ctrl shift t
-- Spring Annotations - Component, Controller, Repository, Service, Configuration, Bean
-- JDBC to JPA
+- Editing
+    - Add Lecture: Docker Installation (Editing)
+- Uploading Courses
+    - Add Section: Functional Programming Basics
+    - JDBC to JPA Lecture
+    - Text Lectures
+        - MySQL instructions
+        - Make html content available as text lecture!
+        - 99-step-by-step-changes.md
+- Future: Lombok
+- Future: Understand Spring Boot Project Structure!
+- Future: Which Java Version to Use?
+- Future: Spring Boot Feature Lectures
+- Future: My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v), ctrl shift r and ctrl shift t, ctrl click to see the source! Practice, Practice and Practice
+- Future: Spring Annotations - Component, Controller, Repository, Service, Configuration, Bean
 
 ### Step Wise Details
 - Step 01 - Creating Spring Boot Web Application with Spring Initializr
