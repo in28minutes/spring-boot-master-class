@@ -95,25 +95,25 @@ public class SecurityConfiguration {
 - Lecture: Magic of JPA - Show the generated queries!
 - Lecture Rerecord: Target Date Lecture
     - BUG ALERT: Replace Hardcoded LocalDate.now().plusYears(1) in addNewTodo with todo.getTargetDate()
-- Editing: Refer "Functional Programming in 30 Minutes" for a quick intro to Functional Programming
-- Editing: Folder Structure
-- Editing: Creating New Files
+- Lecture: Spring Boot Master Class - Installing Basic Tools
+- Lecture: Spring Boot in 10 Steps - Intro 3.0.0.M3
 - Editing: toString method is called on the Todo object
 - Editing
     - Add Lecture: Docker Installation (Editing)
 - Uploading Courses
     - Add Section: Functional Programming Basics
+    - Add Section: Spring Boot in 10 Steps!
     - JDBC to JPA Lecture
     - Text Lectures
         - MySQL instructions
         - Make html content available as text lecture!
         - 99-step-by-step-changes.md
 - Future: Lombok
-- Future: Understand Spring Boot Project Structure!
+- Future: My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v), ctrl shift r and ctrl shift t, ctrl click to see the source! Practice, Practice and Practice
 - Future: Which Java Version to Use?
 - Future: Spring Boot Feature Lectures
-- Future: My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v), ctrl shift r and ctrl shift t, ctrl click to see the source! Practice, Practice and Practice
-- Future: Spring Annotations - Component, Controller, Repository, Service, Configuration, Bean
+    - Future: Understand Spring Boot Project Structure!
+    - Future: Spring Annotations - Component, Controller, Repository, Service, Configuration, Bean
 
 ### Step Wise Details
 - Step 01 - Creating Spring Boot Web Application with Spring Initializr
