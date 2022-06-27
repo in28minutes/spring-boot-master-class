@@ -95,21 +95,6 @@ On Spring Initializr, choose:
         - Web
         - DevTools
 
-- Lectures.md
-    - Lecture: Spring Boot Master Class - Installing Basic Tools
-- Lecture: Web Application - Intro!
-- Lecture: Spring Initializr Lecture
-- Lecture: 99-step-by-step-changes.md
-- Lecture: Magic of JPA - Show the generated queries!
-- Lecture: Introduction to Functional Programming Basics
-- Lecture Rerecord: Target Date Lecture
-    - FieldSet, Remove Id
-    - Update (spring.mvc.format.date=yyyy-MM-dd)
-    - Add New Todo (Remove LocalDate.now().plusYears(1))
-    - Add Bootstrap code
-    - Show it in action
-- Editing
-    - Add Lecture: Docker Installation (Editing)
 - Uploading Courses
     - Add Section: Functional Programming Basics
     - Add Section: Spring Boot in 10 Steps!
@@ -118,6 +103,8 @@ On Spring Initializr, choose:
         - MySQL instructions
         - Make html content available as text lecture!
         - 99-step-by-step-changes.md
+        - Github link before lectures referring to github
+    - Announcement
 - Future: Lombok
 - Future: My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v), ctrl shift r and ctrl shift t, ctrl click to see the source! Practice, Practice and Practice
 - Future: Which Java Version to Use?

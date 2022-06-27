@@ -1,5 +1,5 @@
 <!---
-Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-class/02.Spring-Boot-Web-Application-V2
+Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-class/02.Spring-Boot-Web-Application-v2/Step26
 -->
 
 ## Complete Code Example
@@ -66,7 +66,7 @@ Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-
 			<artifactId>jquery</artifactId>
 			<version>3.6.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap-datepicker</artifactId>
@@ -399,7 +399,7 @@ public class TodoController {
 		
 		String username = (String)model.get("name");
 		todoService.addTodo(username, todo.getDescription(), 
-				LocalDate.now().plusYears(1), false);
+				todo.getTargetDate(), false);
 		return "redirect:list-todos";
 	}
 
@@ -592,8 +592,7 @@ public class TodoService {
 <html>
 	<head>
 		<link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" >
-		<link href="webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet" >
-		
+		<link href="webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"  rel="stylesheet">
 		<title>Add Todo Page</title>		
 	</head>
 	<body>
@@ -606,14 +605,13 @@ public class TodoService {
 					<form:input type="text" path="description" required="required"/>
 					<form:errors path="description" cssClass="text-warning"/>
 				</fieldset>
-
+				
 				<fieldset class="mb-3">				
 					<form:label path="targetDate">Target Date</form:label>
 					<form:input type="text" path="targetDate" required="required"/>
 					<form:errors path="targetDate" cssClass="text-warning"/>
 				</fieldset>
 
-				
 				<form:input type="hidden" path="id"/>
 
 				<form:input type="hidden" path="done"/>
@@ -626,12 +624,12 @@ public class TodoService {
 		<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 		<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
 		<script src="webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+		
 		<script type="text/javascript">
-			$('#targetDate').datepicker({
-			    format: 'yyyy-mm-dd'
-			});
-		</script>
-						
+		$('#targetDate').datepicker({
+		    format: 'yyyy-mm-dd'
+		});
+		</script>		
 	</body>
 </html>
 ```
