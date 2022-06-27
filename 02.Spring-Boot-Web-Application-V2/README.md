@@ -172,3 +172,77 @@ Step33 -> Step36
 Step36 -> Step38
 Step38 -> Step41
 ```
+
+## Files to Upload 20220627
+```
+00 Spring Boot Master Class 00 - Promo 20220627.mp4
+00 Spring Boot Master Class 01 - Course Preview 20220627.mp4
+00 Spring Boot Master Class 03 - Installing Java and Eclipse 20220627.mp4
+
+92 Step 01 - Getting Started with Spring Boot - Goals.mp4
+92 Step 02 - Setting up New Spring Boot Project with Spring Initializr.mp4
+92 Step 03 - Build a Hello World API with Spring Boot.mp4
+92 Step 04 - Understanding the World Before Spring Boot - 10000 Feet Overview.mp4
+92 Step 05 - Understanding Spring Boot Magic - Spring Boot Starter Projects.mp4
+92 Step 06 - Understanding Spring Boot Magic - Auto Configuration.mp4
+92 Step 07 - Playing with Spring Boot.mp4
+92 Step 08 - Understanding Spring Boot Magic - Embedded Servers.mp4
+92 Step 09 - Exploring Spring Boot Actuator.mp4
+92 Step 10 - Exploring Spring Boot DevTools.mp4
+92 Step 11 - Understanding Spring Boot vs Spring vs Spring MVC.mp4
+92 Step 12 - Getting Started with Spring Boot - Review.mp4
+
+Step 01 - Creating Spring Boot Web Application with Spring Initializr 20220627.mp4
+Step 02 - Quick overview of Spring Boot Project 20220627.mp4
+Step 03 - First Spring MVC Controller, @ResponseBody, @Controller 20220627.mp4
+Step 04 - 01 - Enhancing Spring MVC Controller to provide HTML response 20220627.mp4
+Step 04 - 02 - Exploring Step By Step Coding and Debugging Guide 20220627.mp4
+Step 05 - Redirect to a JSP using Spring Boot - Controller, @ResponseBody and View Resolver 20220627.mp4
+Step 06 - Exercise - Creating LoginController and login view 20220627.mp4
+Step 07 - Quick Overview - How does web work - Request and Response 20220627.mp4
+Step 08 - Capturing QueryParams using RequestParam and First Look at Model 20220627.mp4
+Step 09 - Quick Overview - Importance of Logging with Spring Boot 20220627.mp4
+Step 10 - Understanding DispatcherServlet, Model 1, Model 2 and Front Controller 20220627.mp4
+Step 11 - Creating a Login Form 20220627.mp4
+Step 12 - Displaying Login Credentials in a JSP using Model 20220627.mp4
+Step 13 - Add hard coded validation of userid and password 20220627.mp4
+Step 14 - Getting started with Todo Features - Creating Todo and TodoService 20220627.mp4
+Step 15 - Creating first version of List Todos Page 20220627.mp4
+Step 16 - Understanding Session vs Model vs Request - @SessionAttributes 20220627.mp4
+Step 17 - Adding JSTL to Spring Boot Project and Showing Todos in a Table 20220627.mp4
+Step 18 - Adding Bootstrap CSS framework to Spring Boot Project using webjars 20220627.mp4
+Step 19 - Formatting JSP pages with Bootstrap CSS framework 20220627.mp4
+Step 20 - Lets Add a New Todo - Create a new View 20220627.mp4
+Step 21 - Enhancing TodoService to add the todo 20220627.mp4
+Step 22 - Adding Validations using Spring Boot Starter Validation 20220627.mp4
+Step 23 - Using Command Beans to implement New Todo Page Validations 20220627.mp4
+Step 24 - Implementing Delete Todo Feature - New View 20220627.mp4
+Step 25 - Implementing Update Todo - 1 - Show Update Todo Page 20220627.mp4
+Step 26 - Implementing Update Todo - 1 - Save changes to Todo 20220627.mp4
+Step 27 - Adding Target Date Field to Todo Page 20220627.mp4
+Step 28 - Adding a Navigation Bar and Implementing JSP Fragments 20220627.mp4
+Step 29 - Preparing for Spring Security 20220627.mp4
+Step 30 - Setting up Spring Security with Spring Boot Starter Security 20220627.mp4
+Step 31 - Configuring Spring Security with Custom User and Password Encoder 20220627.mp4
+Step 32 - Refactoring and Removing Hardcoding of User Id 20220627.mp4
+Step 33 - Setting up a New User for Todo Application 20220627.mp4
+Step 34 - Adding Spring Boot Starter Data JPA and Getting H2 database ready 20220627.mp4
+Step 35 - 01 - Configuring Spring Security to Get H2 console Working 20220627.mp4
+Step 35 - 02 - JDBC to Spring JDBC to JPA to Spring Data JPA - 10000 Feet Overview.mp4
+Step 36 - Making Todo an Entity and Population Todo Data into H2 20220627.mp4
+Step 37 - Creating TodoRepository and Connecting List Todos page from H2 database 20220627.mp4
+Step 38 - 01 - Connecting All Todo App Features to H2 Database 20220627.mp4
+Step 38 - 02 - Exploring Magic of Spring Boot Starter JPA and JpaRepository 20220627.mp4
+Step 39 - OPTIONAL - Overview of Connecting Todo App to MySQL database 20220627.mp4
+Step 40 - OPTIONAL - Installing Docker 20220627.mp4
+Step 41 - OPTIONAL - Connecting Todo App to MySQL database 20220627.mp4
+
+Step 00 - Introduction to Functional Programming - Overview 20220627.mp4
+Step 01 - Getting Started with Functional Programming with Java.mp4
+Step 02 - Writing Your First Java Functional Program.mp4
+Step 03 - Improving Java Functional Program with filter.mp4
+Step 04 - Using Lambda Expression to enhance your Functional Program.mp4
+Step 05 - Do Functional Programming Exercises with Streams, Filters and Lambdas.mp4
+Step 06 - Using map in Functional Programs - with Exercises.mp4
+Step 07 - Quick Review of Functional Programming Basics.mp4
+```
