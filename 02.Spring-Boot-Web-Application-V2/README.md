@@ -88,23 +88,6 @@ public class SecurityConfiguration {
 
 ### Todo
 
-On Spring Initializr, choose:
-- Group Id: com.in28minutes.springboot
-- Artifact Id: myfirstwebapp
-    - Dependencies
-        - Web
-        - DevTools
-
-- Uploading Courses
-    - Add Section: Functional Programming Basics
-    - Add Section: Spring Boot in 10 Steps!
-    - JDBC to JPA Lecture
-    - Text Lectures
-        - MySQL instructions
-        - Make html content available as text lecture!
-        - 99-step-by-step-changes.md
-        - Github link before lectures referring to github
-    - Announcement
 - Future: Lombok
 - Future: My favorite Eclipse shortcuts ctrl 1, ctrl space and ctrl shift o (ctrl c and ctrl v), ctrl shift r and ctrl shift t, ctrl click to see the source! Practice, Practice and Practice
 - Future: Which Java Version to Use?
