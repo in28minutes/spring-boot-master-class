@@ -11,7 +11,7 @@ Understand and love the power of Spring Boot - All its features are illustrated 
 - Use **latest version** of "Eclipse IDE for Enterprise Java Developers"
 - Remember: Spring Boot 3+ works only with JDK 17+
 
-### Installing JDK
+### Installing Java
 
 - Windows - https://www.youtube.com/watch?v=I0SBRWVS0ok
 - Linux - https://www.youtube.com/watch?v=mHvFpyHK97A
@@ -27,8 +27,7 @@ Understand and love the power of Spring Boot - All its features are illustrated 
 - Others - https://www.youtube.com/watch?v=XveQ9Gq41UM
 
 #### Troubleshooting
-- Configuring Java JDK - https://www.youtube.com/watch?v=8i0r_fcE3L0
-- Using Latest Java Version with Latest Eclipse - https://www.youtube.com/watch?v=3O0TASeDqSs
+- Configuring Java in Eclipse - https://www.youtube.com/watch?v=8i0r_fcE3L0
 
 
 ### Introduction
