@@ -88,16 +88,26 @@ public class SecurityConfiguration {
 
 ### Todo
 
+On Spring Initializr, choose:
+- Group Id: com.in28minutes.springboot
+- Artifact Id: myfirstwebapp
+    - Dependencies
+        - Web
+        - DevTools
+
+- Lectures.md
+    - Lecture: Spring Boot Master Class - Installing Basic Tools
+- Lecture: Web Application - Intro!
 - Lecture: Spring Initializr Lecture
-- Lecture: Topical Videos (HTML, JS, CSS, JSTL, Spring Tags)
 - Lecture: 99-step-by-step-changes.md
-- Lecture: Functional Programming Basics (30 minutes intro to Functional Programming)
 - Lecture: Magic of JPA - Show the generated queries!
+- Lecture: Introduction to Functional Programming Basics
 - Lecture Rerecord: Target Date Lecture
-    - BUG ALERT: Replace Hardcoded LocalDate.now().plusYears(1) in addNewTodo with todo.getTargetDate()
-- Lecture: Spring Boot Master Class - Installing Basic Tools
-- Lecture: Spring Boot in 10 Steps - Intro 3.0.0.M3
-- Editing: toString method is called on the Todo object
+    - FieldSet, Remove Id
+    - Update (spring.mvc.format.date=yyyy-MM-dd)
+    - Add New Todo (Remove LocalDate.now().plusYears(1))
+    - Add Bootstrap code
+    - Show it in action
 - Editing
     - Add Lecture: Docker Installation (Editing)
 - Uploading Courses
@@ -114,6 +124,7 @@ public class SecurityConfiguration {
 - Future: Spring Boot Feature Lectures
     - Future: Understand Spring Boot Project Structure!
     - Future: Spring Annotations - Component, Controller, Repository, Service, Configuration, Bean
+- Future: Topical Videos (HTML, JS, CSS, JSTL, Spring Tags)
 
 ### Step Wise Details
 - Step 01 - Creating Spring Boot Web Application with Spring Initializr

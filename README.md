@@ -3,6 +3,34 @@ Understand and love the power of Spring Boot - All its features are illustrated 
 
 [![Image](https://www.springboottutorial.com/images/Course-Learn-Spring-Boot-in-100-Steps---Beginner-to-Expert.png "Learn Spring Boot in 100 Steps - Beginner to Expert")](https://www.udemy.com/course/spring-boot-tutorial-for-beginners/)
 
+## Installing Tools
+
+### Our Recommendations
+
+- Use **latest version** of Java
+- Use **latest version** of "Eclipse IDE for Enterprise Java Developers"
+- Remember: Spring Boot 3+ works only with JDK 17+
+
+### Installing JDK
+
+- Windows - https://www.youtube.com/watch?v=I0SBRWVS0ok
+- Linux - https://www.youtube.com/watch?v=mHvFpyHK97A
+- Mac - https://www.youtube.com/watch?v=U3kTdMPlgsY
+
+#### Troubleshooting
+
+- Troubleshooting Java Installation - https://www.youtube.com/watch?v=UI_PabQ1YB0
+
+### Installing Eclipse
+
+- Windows - https://www.youtube.com/watch?v=toY06tsME-M
+- Others - https://www.youtube.com/watch?v=XveQ9Gq41UM
+
+#### Troubleshooting
+- Configuring Java JDK - https://www.youtube.com/watch?v=8i0r_fcE3L0
+- Using Latest Java Version with Latest Eclipse - https://www.youtube.com/watch?v=3O0TASeDqSs
+
+
 ### Introduction
 
 Spring Boot has a lot of magic going for it. 
@@ -149,11 +177,6 @@ Refer each steps
 - A basic understanding of JPA, Spring Security will be useful.
 - You are NOT expected to have any experience with Eclipse or Maven.
 - We will help you install Eclipse and get up and running with Maven.
-
-## Installing Tools
-- Installation Video : https://www.youtube.com/playlist?list=PLBBog2r6uMCSmMVTW_QmDLyASBvovyAO3
-- GIT Repository For Installation : https://github.com/in28minutes/getting-started-in-5-steps
-- PDF : https://github.com/in28minutes/SpringIn28Minutes/blob/master/InstallationGuide-JavaEclipseAndMaven_v2.pdf
 
 ## Running Examples
 - Download the zip or clone the Git repository.
