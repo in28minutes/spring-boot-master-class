@@ -192,6 +192,249 @@ PagingAndSortingRepository<User, Long> {
     List<User> findByRole(@Param("role") String role);
 }
 
+
+package com.in28minutes.springboot.firstrestapi.survey;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.List;
+
+import org.json.JSONException;
+import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
+
+@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
+class SurveyResourceIT {
+    
+    
+    @Autowired
+    TestRestTemplate restTemplate;
+
+    @Test
+    public void testRetrieveSurveyQuestion() throws JSONException {
+        HttpEntity<String> entity = new HttpEntity<String>(null,createBasicAuthHeader());
+
+        ResponseEntity<String> response = restTemplate.exchange("/surveys/Survey1/questions/Question1",
+                HttpMethod.GET, entity, String.class);
+
+        String expected = "{id:Question1,description:\"Most Popular Cloud Platform Today\",correctAnswer:AWS}";
+
+        JSONAssert.assertEquals(expected, response.getBody(), false);
+    }
+
+
+    private MultiValueMap<String, String> createBasicAuthHeader() {
+        HttpHeaders headers = new HttpHeaders();
+        
+        headers.add("Authorization", createHttpAuthenticationHeaderValue(
+                "user1", "secret1"));
+        headers.setAccept(List.of(MediaType.APPLICATION_JSON)); // replaced Arrays.asList with List.of
+
+        return headers;
+    }
+
+
+    private String createHttpAuthenticationHeaderValue(String userId,
+            String password) {
+
+        String auth = userId + ":" + password;
+        byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes(StandardCharsets.US_ASCII));
+        String headerValue = "Basic " + new String(encodedAuth);
+        return headerValue;
+    }
+
+    @Test
+    public void testRetrieveAllSurveyQuestion() throws JSONException {
+        HttpEntity<String> entity = new HttpEntity<String>(null,createBasicAuthHeader());
+
+        ResponseEntity<List<Question>> response = restTemplate.exchange("/surveys/Survey1/questions",
+                HttpMethod.GET, entity, new ParameterizedTypeReference<List<Question>>() {
+                } );
+
+        Question question1 = new Question("Question1", "Most Popular Cloud Platform Today",
+                Arrays.asList("AWS", "Azure", "Google Cloud", "Oracle Cloud"), "AWS");
+        
+        assertTrue(response.getBody().contains(question1));
+
+    }
+    
+    
+    @Test
+    public void addQuestion() {
+
+        Question question = new Question("Question10", "Most Popular Cloud Platform Today",
+                Arrays.asList("AWS", "Azure", "Google Cloud", "Oracle Cloud"), "AWS");
+
+        HttpEntity<Question> entity = new HttpEntity<Question>(question, createBasicAuthHeader());
+
+        ResponseEntity<String> response = restTemplate.exchange("/surveys/Survey1/questions",
+                HttpMethod.POST, entity, String.class);
+
+        String actual = response.getHeaders().get(HttpHeaders.LOCATION).get(0);
+
+        assertTrue(actual.contains("/surveys/Survey1/questions/"));
+
+    }
+
+}
+
+
+package com.in28minutes.springboot.firstrestapi.survey;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+
+@WebMvcTest(value = SurveyResource.class)
+@WithMockUser
+public class SurveyResourceTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private SurveyService surveyService;
+
+    @Test
+    public void retrieveDetailsForQuestion() throws Exception {
+
+        Question mockQuestion = new Question("Question1", "Largest Country in the World",
+                Arrays.asList("India", "Russia", "United States", "China"), "Russia");
+
+        Mockito.when(surveyService.retrieveSpecificSurveyQuestion(Mockito.anyString(), Mockito.anyString()))
+                .thenReturn(mockQuestion);
+
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/surveys/Survey1/questions/Question1")
+                .accept(MediaType.APPLICATION_JSON);
+
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+        String expected = "{id:Question1,description:\"Largest Country in the World\",correctAnswer:Russia}";
+
+        JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
+
+    }
+
+    @Test
+    public void createSurveyQuestion() throws Exception {
+
+        String questionJson = "{\"description\":\"Smallest Number\",\"correctAnswer\":\"1\",\"options\":[\"1\",\"2\",\"3\",\"4\"]}";
+
+        Mockito.when(surveyService.addNewSurveyQuestion(Mockito.anyString(), Mockito.any(Question.class)))
+                .thenReturn("DUMMY_ID");
+
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/surveys/Survey1/questions").with(csrf())
+                .accept(MediaType.APPLICATION_JSON).content(questionJson).contentType(MediaType.APPLICATION_JSON);
+
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+        MockHttpServletResponse response = result.getResponse();
+
+        assertEquals(HttpStatus.CREATED.value(), response.getStatus());
+
+        assertEquals("http://localhost/surveys/Survey1/questions/DUMMY_ID", response.getHeader(HttpHeaders.LOCATION));
+    }
+
+}
+
+
+package com.in28minutes.springboot.firstrestapi;
+
+import static org.springframework.security.config.Customizer.withDefaults;
+
+import java.util.function.Function;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+public class SecurityConfig {
+
+    @Bean
+    public InMemoryUserDetailsManager createUserDetailsManager() {
+
+        UserDetails userDetails1 = createNewUser("user1", "secret1", "USER");
+        UserDetails userDetails2 = createNewUser("admin1", "secret1", "USER", "ADMIN");
+
+        return new InMemoryUserDetailsManager(userDetails1, userDetails2);
+    }
+
+    private UserDetails createNewUser(String username, String password, String... roles) {
+        Function<String, String> passwordEncoder = input -> passwordEncoder().encode(input);
+
+        UserDetails userDetails = User.builder().passwordEncoder(passwordEncoder).username(username).password(password)
+                .roles(roles).build();
+        return userDetails;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        http.httpBasic(withDefaults());
+
+        http.authorizeHttpRequests(
+                auth -> auth.anyRequest().authenticated());
+
+        http.csrf().disable();
+
+        http.headers().frameOptions().disable();
+
+        return http.build();
+    }
+
+}
+
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
 ## Spring Boot Starter Web
 
 - Starter for building applications with Spring MVC. 
