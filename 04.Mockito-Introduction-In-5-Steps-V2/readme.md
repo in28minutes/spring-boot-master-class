@@ -1,27 +1,54 @@
-## First 5 Steps in Mockito
+# First 5 Steps in Mockito
 
 Mockito is the most famous mocking framework in Java.
 
-- Git Repository - https://github.com/in28minutes/getting-started-in-5-steps
-- Pre-requisites 
-    - Java & Eclipse - https://www.youtube.com/playlist?list=PLBBog2r6uMCSmMVTW_QmDLyASBvovyAO3
-    - JUnit - https://courses.in28minutes.com/p/junit-tutorial-for-beginners
-- Easier Static Imports
-  - Window > Preferences > Java > Editor > Content Assist > Favorites
-    - org.junit.Assert
-    - org.mockito.BDDMockito
-    - org.mockito.Mockito
-    - org.hamcrest.Matchers
-    - org.hamcrest.CoreMatchers
+## Installing Tools
+
+### Our Recommendations
+
+- Use **latest version** of Java
+- Use **latest version** of "Eclipse IDE for Enterprise Java Developers"
+- Remember: Spring Boot 3+ works only with Java 17+
+
+### Installing Java
+
+- Windows - https://www.youtube.com/watch?v=I0SBRWVS0ok
+- Linux - https://www.youtube.com/watch?v=mHvFpyHK97A
+- Mac - https://www.youtube.com/watch?v=U3kTdMPlgsY
+
+#### Troubleshooting
+
+- Troubleshooting Java Installation - https://www.youtube.com/watch?v=UI_PabQ1YB0
+
+### Installing Eclipse
+
+- Windows - https://www.youtube.com/watch?v=toY06tsME-M
+- Others - https://www.youtube.com/watch?v=XveQ9Gq41UM
+
+#### Troubleshooting
+- Configuring Java in Eclipse - https://www.youtube.com/watch?v=8i0r_fcE3L0
+
+## Easier Static Imports
+- Window > Preferences > Java > Editor > Content Assist > Favorites
+- org.junit.Assert
+- org.mockito.BDDMockito
+- org.mockito.Mockito
+- org.hamcrest.Matchers
+- org.hamcrest.CoreMatchers
 - More information 
-   - Visit Mockito Official Documentation - [Mockito Documentation] (http://site.mockito.org/mockito/docs/current/org/mockito/Mockito.html)
+- Visit Mockito Official Documentation - [Mockito Documentation] (http://site.mockito.org/mockito/docs/current/org/mockito/Mockito.html)
+
+## Step by Step Details
 
 - Step 1 : Setting up an example using http://start.spring.io.
 - Step 2 : Using a Stubs - Disadvantages
 - Step 3 : Your first mock. 
 - Step 4 : Using Mockito Annotations - @Mock, @InjectMocks, @RunWith(MockitoJUnitRunner.class)
 - Step 5 : Mocking List interface
-- Next Steps
+
+<!---
+Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-class/04.Mockito-Introduction-In-5-Steps-V2
+-->
 
 ## Complete Code Example
 
@@ -31,30 +58,22 @@ Mockito is the most famous mocking framework in Java.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>com.in28minutes.mockito</groupId>
-	<artifactId>mockito-demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-
-	<name>mockito-demo</name>
-	<description>Demo project for Spring Boot</description>
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.RELEASE</version>
+		<version>3.0.0-M3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-
+	<groupId>com.in28minutes.mockito</groupId>
+	<artifactId>mockito-demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>mockito-demo</name>
+	<description>Demo project for Spring Boot</description>
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -76,16 +95,7 @@ Mockito is the most famous mocking framework in Java.
 			</plugin>
 		</plugins>
 	</build>
-
 	<repositories>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
 		<repository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
@@ -95,16 +105,7 @@ Mockito is the most famous mocking framework in Java.
 			</snapshots>
 		</repository>
 	</repositories>
-
 	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
 		<pluginRepository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
@@ -115,19 +116,7 @@ Mockito is the most famous mocking framework in Java.
 		</pluginRepository>
 	</pluginRepositories>
 
-
 </project>
-```
----
-
-### /src/main/java/com/in28minutes/mockito/mockitodemo/DataService.java
-
-```java
-package com.in28minutes.mockito.mockitodemo;
-
-public interface DataService {
-	int[] retrieveAllData();
-}
 ```
 ---
 
@@ -145,34 +134,41 @@ public class MockitoDemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MockitoDemoApplication.class, args);
 	}
+
 }
 ```
 ---
 
-### /src/main/java/com/in28minutes/mockito/mockitodemo/SomeBusinessImpl.java
+### /src/main/java/com/in28minutes/mockito/mockitodemo/business/SomeBusinessImpl.java
 
 ```java
-package com.in28minutes.mockito.mockitodemo;
+package com.in28minutes.mockito.mockitodemo.business;
 
 public class SomeBusinessImpl {
+	
 	private DataService dataService;
-
+	
 	public SomeBusinessImpl(DataService dataService) {
 		super();
 		this.dataService = dataService;
 	}
-
-	int findTheGreatestFromAllData() {
+	
+	public int findTheGreatestFromAllData() {
 		int[] data = dataService.retrieveAllData();
-		int greatest = Integer.MIN_VALUE;
-
-		for (int value : data) {
-			if (value > greatest) {
-				greatest = value;
-			}
+		int greatestValue = Integer.MIN_VALUE;
+		for(int value:data) {
+			if(value > greatestValue)
+				greatestValue = value;
 		}
-		return greatest;
+		return greatestValue;
 	}
+
+}
+
+interface DataService {
+	int[] retrieveAllData();
+	
+	
 }
 ```
 ---
@@ -180,58 +176,7 @@ public class SomeBusinessImpl {
 ### /src/main/resources/application.properties
 
 ```properties
-```
----
 
-### /src/test/java/com/in28minutes/mockito/mockitodemo/ListTest.java
-
-```java
-package com.in28minutes.mockito.mockitodemo;
-
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-import java.util.List;
-
-import org.junit.Test;
-import org.mockito.Mockito;
-
-public class ListTest {
-
-	@Test
-	public void testSize() {
-		List listMock = mock(List.class);
-		when(listMock.size()).thenReturn(10);
-		assertEquals(10, listMock.size());
-		assertEquals(10, listMock.size());
-	}
-
-	@Test
-	public void testSize_multipleReturns() {
-		List listMock = mock(List.class);
-		when(listMock.size()).thenReturn(10).thenReturn(20);
-		assertEquals(10, listMock.size());
-		assertEquals(20, listMock.size());
-		assertEquals(20, listMock.size());
-	}
-
-	@Test
-	public void testGet_SpecificParameter() {
-		List listMock = mock(List.class);
-		when(listMock.get(0)).thenReturn("SomeString");
-		assertEquals("SomeString", listMock.get(0));
-		assertEquals(null, listMock.get(1));
-	}
-
-	@Test
-	public void testGet_GenericParameter() {
-		List listMock = mock(List.class);
-		when(listMock.get(Mockito.anyInt())).thenReturn("SomeString");
-		assertEquals("SomeString", listMock.get(0));
-		assertEquals("SomeString", listMock.get(1));
-	}
-}
 ```
 ---
 
@@ -240,127 +185,171 @@ public class ListTest {
 ```java
 package com.in28minutes.mockito.mockitodemo;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class MockitoDemoApplicationTests {
+class MockitoDemoApplicationTests {
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 	}
 
 }
 ```
 ---
 
-### /src/test/java/com/in28minutes/mockito/mockitodemo/SomeBusinessMockAnnotationsTest.java
+### /src/test/java/com/in28minutes/mockito/mockitodemo/business/SomeBusinessImplMockTest.java
 
 ```java
-package com.in28minutes.mockito.mockitodemo;
+package com.in28minutes.mockito.mockitodemo.business;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
-public class SomeBusinessMockAnnotationsTest {
-
+@ExtendWith(MockitoExtension.class)
+class SomeBusinessImplMockTest {
+	
 	@Mock
-	DataService dataServiceMock;
-
+	private DataService dataServiceMock;
+	
 	@InjectMocks
-	SomeBusinessImpl businessImpl;
+	private SomeBusinessImpl businessImpl;
 
 	@Test
-	public void testFindTheGreatestFromAllData() {
-		when(dataServiceMock.retrieveAllData()).thenReturn(new int[] { 24, 15, 3 });
-		assertEquals(24, businessImpl.findTheGreatestFromAllData());
+	void findTheGreatestFromAllData_basicScenario() {
+		when(dataServiceMock.retrieveAllData()).thenReturn(new int[]{25, 15, 5});
+		assertEquals(25, businessImpl.findTheGreatestFromAllData());
+	}
+	
+	@Test
+	void findTheGreatestFromAllData_OneValue() {
+		when(dataServiceMock.retrieveAllData()).thenReturn(new int[]{35});
+		assertEquals(35, businessImpl.findTheGreatestFromAllData());
 	}
 
 	@Test
-	public void testFindTheGreatestFromAllData_ForOneValue() {
-		when(dataServiceMock.retrieveAllData()).thenReturn(new int[] { 15 });
-		assertEquals(15, businessImpl.findTheGreatestFromAllData());
-	}
-
-	@Test
-	public void testFindTheGreatestFromAllData_NoValues() {
-		when(dataServiceMock.retrieveAllData()).thenReturn(new int[] {});
+	void findTheGreatestFromAllData_EmptyArray() {
+		when(dataServiceMock.retrieveAllData()).thenReturn(new int[]{});
 		assertEquals(Integer.MIN_VALUE, businessImpl.findTheGreatestFromAllData());
 	}
+
 }
 ```
 ---
 
-### /src/test/java/com/in28minutes/mockito/mockitodemo/SomeBusinessMockTest.java
+### /src/test/java/com/in28minutes/mockito/mockitodemo/business/SomeBusinessImplStubTest.java
 
 ```java
-package com.in28minutes.mockito.mockitodemo;
+package com.in28minutes.mockito.mockitodemo.business;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class SomeBusinessImplStubTest {
+
+	@Test
+	void findTheGreatestFromAllData_basicScenario() {
+		DataService dataServiceStub = new DataServiceStub1();
+		SomeBusinessImpl businessImpl = new SomeBusinessImpl(dataServiceStub);
+		int result = businessImpl.findTheGreatestFromAllData();
+		assertEquals(25, result);
+	}
+
+	@Test
+	void findTheGreatestFromAllData_withOneValue() {
+		DataService dataServiceStub = new DataServiceStub2();
+		SomeBusinessImpl businessImpl = new SomeBusinessImpl(dataServiceStub);
+		int result = businessImpl.findTheGreatestFromAllData();
+		assertEquals(35, result);
+	}
+
+}
+
+class DataServiceStub1 implements DataService {
+
+	@Override
+	public int[] retrieveAllData() {
+		return new int[]{25, 15, 5};
+	}
+	
+}
+
+
+class DataServiceStub2 implements DataService {
+
+	@Override
+	public int[] retrieveAllData() {
+		return new int[]{35};
+	}
+	
+}
+```
+---
+
+### /src/test/java/com/in28minutes/mockito/mockitodemo/list/ListTest.java
+
+```java
+package com.in28minutes.mockito.mockitodemo.list;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import org.junit.Test;
+import java.util.List;
 
-public class SomeBusinessMockTest {
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+public class ListTest {
+	
+	@Test
+	void simpleTest() {
+		List listMock = mock(List.class);
+		//listMock.size() => 3
+		when(listMock.size()).thenReturn(3);	
+		assertEquals(3, listMock.size());
+		assertEquals(3, listMock.size());
+		assertEquals(3, listMock.size());
+		assertEquals(3, listMock.size());
+	}
 
 	@Test
-	public void testFindTheGreatestFromAllData() {
-		DataService dataServiceMock = mock(DataService.class);
-		when(dataServiceMock.retrieveAllData()).thenReturn(new int[] { 24, 15, 3 });
-		SomeBusinessImpl businessImpl = new SomeBusinessImpl(dataServiceMock);
-		int result = businessImpl.findTheGreatestFromAllData();
-		assertEquals(24, result);
+	void multipleReturns() {
+		List listMock = mock(List.class);
+		//listMock.size() => 3
+		when(listMock.size()).thenReturn(1).thenReturn(2);	
+		assertEquals(1, listMock.size());
+		assertEquals(2, listMock.size());
+		assertEquals(2, listMock.size());
+		assertEquals(2, listMock.size());
+	}
+	
+	@Test
+	void specificParameters() {
+		List listMock = mock(List.class);
+		//listMock.size() => 3
+		when(listMock.get(0)).thenReturn("SomeString");	
+		assertEquals("SomeString", listMock.get(0));
+		assertEquals(null, listMock.get(1));
 	}
 
 	@Test
-	public void testFindTheGreatestFromAllData_ForOneValue() {
-		DataService dataServiceMock = mock(DataService.class);
-		when(dataServiceMock.retrieveAllData()).thenReturn(new int[] { 15 });
-		SomeBusinessImpl businessImpl = new SomeBusinessImpl(dataServiceMock);
-		int result = businessImpl.findTheGreatestFromAllData();
-		assertEquals(15, result);
+	void genericParameters() {
+		List listMock = mock(List.class);
+		//listMock.size() => 3
+		when(listMock.get(Mockito.anyInt())).thenReturn("SomeOtherString");	
+		assertEquals("SomeOtherString", listMock.get(0));
+		assertEquals("SomeOtherString", listMock.get(1));
 	}
 
-}
-```
----
-
-### /src/test/java/com/in28minutes/mockito/mockitodemo/SomeBusinessStubTest.java
-
-```java
-package com.in28minutes.mockito.mockitodemo;
-
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
-public class SomeBusinessStubTest {
-	@Test
-	public void testFindTheGreatestFromAllData() {
-		SomeBusinessImpl businessImpl = new SomeBusinessImpl(new DataServiceStub());
-		int result = businessImpl.findTheGreatestFromAllData();
-		assertEquals(24, result);
-
-	}
-
-}
-
-class DataServiceStub implements DataService {
-	@Override
-	public int[] retrieveAllData() {
-		return new int[] { 24, 6, 15 };
-	}
 }
 ```
 ---
