@@ -709,6 +709,7 @@ class JsonAssertTest {
 package com.in28minutes.springboot.firstrestapi.survey;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
@@ -717,42 +718,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class SurveyResourceIT {
 	
-	//http://localhost:8080/surveys/Survey1/questions/Question1
-	String str = """
-			
-			{
-			  "id": "Question1",
-			  "description": "Most Popular Cloud Platform Today",
-			  "options": [
-			    "AWS",
-			    "Azure",
-			    "Google Cloud",
-			    "Oracle Cloud"
-			  ],
-			  "correctAnswer": "AWS"
-			}
-			
-			""";
-	
-	
-	// 
-	
 	private static String SPECIFIC_QUESTION_URL = "/surveys/Survey1/questions/Question1";
+	
+	private static String GENERIC_QUESTIONS_URL = "/surveys/Survey1/questions/";
 	
 	@Autowired
 	private TestRestTemplate template;
-	
-	//
-	//[Content-Type:"application/json", 
-
-	
+		
 	@Test
 	void retrieveSpecificSurveyQuestion_basicScenario() throws JSONException {
+		
 		ResponseEntity<String> responseEntity = template.getForEntity(SPECIFIC_QUESTION_URL, String.class);
 
 		String expectedResponse =
@@ -764,13 +747,213 @@ public class SurveyResourceIT {
 				}
 				""";
 
+		assertTrue(responseEntity.getStatusCode().is2xxSuccessful());
+		assertEquals("application/json", responseEntity.getHeaders().get("Content-Type").get(0));
+		
 		JSONAssert.assertEquals(expectedResponse, responseEntity.getBody(), false);
-		//assertEquals(expectedResponse.trim(), responseEntity.getBody());
-		//System.out.println();
-		//System.out.println(responseEntity.getHeaders());
+		 
 	}
 	
+	@Test
+	void retrieveAllSurveyQuestions_basicScenario() throws JSONException {
+		
+		ResponseEntity<String> responseEntity = template.getForEntity(GENERIC_QUESTIONS_URL, String.class);
+
+		String expectedResponse =
+				"""
+						[
+						  {
+						    "id": "Question1"
+						  },
+						  {
+						    "id": "Question2"
+						  },
+						  {
+						    "id": "Question3"
+						  }
+						]
+				
+				""";
+
+		assertTrue(responseEntity.getStatusCode().is2xxSuccessful());
+		assertEquals("application/json", responseEntity.getHeaders().get("Content-Type").get(0));
+		
+		JSONAssert.assertEquals(expectedResponse, responseEntity.getBody(), false);
+		 
+	}
+
+	
+	@Test
+	void addNewSurveyQuestion_basicScenario() {
+
+		String requestBody = """
+					{
+					  "description": "Your Favorite Language",
+					  "options": [
+					    "Java",
+					    "Python",
+					    "JavaScript",
+					    "Haskell"
+					  ],
+					  "correctAnswer": "Java"
+					}
+				""";
+
+		
+		//
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json");
+		
+		HttpEntity<String> httpEntity = new HttpEntity<String>(requestBody, headers);
+		
+		ResponseEntity<String> responseEntity 
+			= template.exchange(GENERIC_QUESTIONS_URL, HttpMethod.POST, httpEntity, String.class);
+		
+		assertTrue(responseEntity.getStatusCode().is2xxSuccessful());
+		
+		String locationHeader = responseEntity.getHeaders().get("Location").get(0);
+		assertTrue(locationHeader.contains("/surveys/Survey1/questions/"));
+		
+		//DELETE
+		//locationHeader
+		
+		template.delete(locationHeader);
+		
+	}
 	
 }
+```
+---
+
+### /src/test/java/com/in28minutes/springboot/firstrestapi/survey/SurveyResourceTest.java
+
+```java
+package com.in28minutes.springboot.firstrestapi.survey;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+
+//SurveyResource
+@WebMvcTest(controllers = SurveyResource.class)
+class SurveyResourceTest {
+	
+	@MockBean
+	private SurveyService surveyService;
+	
+	@Autowired
+	private MockMvc mockMvc;
+	
+	private static String SPECIFIC_QUESTION_URL = "http://localhost:8080/surveys/Survey1/questions/Question1";
+	
+	private static String GENERIC_QUESTION_URL = "http://localhost:8080/surveys/Survey1/questions/";
+	
+	@Test
+	void retrieveSpecificSurveyQuestion_404Scenario() throws Exception {
+		RequestBuilder requestBuilder = 
+				MockMvcRequestBuilders.get(SPECIFIC_QUESTION_URL).accept(MediaType.APPLICATION_JSON);
+		
+		MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();
+		
+		assertEquals(404, mvcResult.getResponse().getStatus());
+		
+	}
+
+	
+	@Test
+	void retrieveSpecificSurveyQuestion_basicScenario() throws Exception {
+		RequestBuilder requestBuilder = 
+				MockMvcRequestBuilders.get(SPECIFIC_QUESTION_URL).accept(MediaType.APPLICATION_JSON);
+		
+		
+		Question question = new Question("Question1", "Most Popular Cloud Platform Today",
+				Arrays.asList("AWS", "Azure", "Google Cloud", "Oracle Cloud"), "AWS");
+
+		when(surveyService.retrieveSpecificSurveyQuestion("Survey1", "Question1")).thenReturn(question);
+		
+		MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();		
+	
+		String expectedResponse = """
+				{
+				
+					"id":"Question1",
+					"description":"Most Popular Cloud Platform Today",
+					"options":["AWS","Azure","Google Cloud","Oracle Cloud"],
+					"correctAnswer":"AWS"
+				
+				}
+						
+				"""; 
+		
+		
+		MockHttpServletResponse response = mvcResult.getResponse();
+		
+		assertEquals(200, response.getStatus());
+		JSONAssert.assertEquals(expectedResponse, response.getContentAsString(), false);
+		
+		
+	}
+	
+	@Test
+	void addNewSurveyQuestion_basicScenario() throws Exception {
+
+		String requestBody = """
+				{
+				  "description": "Your Favorite Language",
+				  "options": [
+				    "Java",
+				    "Python",
+				    "JavaScript",
+				    "Haskell"
+				  ],
+				  "correctAnswer": "Java"
+				}
+			""";
+		
+		when(surveyService.addNewSurveyQuestion(anyString(),any())).thenReturn("SOME_ID");
+
+		RequestBuilder requestBuilder = 
+				MockMvcRequestBuilders.post(GENERIC_QUESTION_URL)
+				.accept(MediaType.APPLICATION_JSON)
+				.content(requestBody).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();		
+		
+		MockHttpServletResponse response = mvcResult.getResponse();
+		String locationHeader = response.getHeader("Location");
+		
+		assertEquals(201, response.getStatus());
+		assertTrue(locationHeader.contains("/surveys/Survey1/questions/SOME_ID"));
+		
+	}
+	
+}
+
+
+
+
+
+
+
+
+
 ```
 ---

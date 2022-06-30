@@ -4,13 +4,30 @@ import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
-public class JsonAssertTest {
+class JsonAssertTest {
 
 	@Test
-	void testJsonAssert() throws JSONException {
-		JSONAssert.assertEquals("{}", "{}", false);
-		JSONAssert.assertEquals("{id:5}", "{ id : 5 }", false);
-		JSONAssert.assertEquals("{id:6, name:Ranga}", "{ id : 6, attr:5, name: \"Ranga\" }", false);	
+	void jsonAssert_learningBasics() throws JSONException {
+		
+		String expectedResponse =
+				"""
+				{
+					"id":"Question1",
+					"description":"Most Popular Cloud Platform Today",
+					"correctAnswer":"AWS"
+				}
+				""";
+		
+		String actualResponse =
+				"""
+				  {"id":"Question1",
+				  "description":"Most Popular Cloud Platform Today",
+				  "options":["AWS","Azure","Google Cloud","Oracle "],
+				  "correctAnswer":"AWS"}
+				""";
+
+		JSONAssert.assertEquals(expectedResponse, actualResponse, false);
+
 	}
 
 }

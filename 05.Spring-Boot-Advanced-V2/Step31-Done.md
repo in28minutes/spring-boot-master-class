@@ -34,6 +34,11 @@ Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
@@ -183,6 +188,88 @@ public class HelloWorldResource {
 		return new HelloWorldBean("Hello World " + name + "," + message);
 	}
 
+}
+```
+---
+
+### /src/main/java/com/in28minutes/springboot/firstrestapi/security/SpringSecurityConfiguration.java
+
+```java
+package com.in28minutes.springboot.firstrestapi.security;
+
+import static org.springframework.security.config.Customizer.withDefaults;
+
+import java.util.function.Function;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+public class SpringSecurityConfiguration {
+	//LDAP or Database
+	//In Memory 
+	
+	//InMemoryUserDetailsManager
+	//InMemoryUserDetailsManager(UserDetails... users)
+	
+	@Bean
+	public InMemoryUserDetailsManager createUserDetailsManager() {
+		
+		UserDetails userDetails1 = createNewUser("admin", "password");
+		UserDetails userDetails2 = createNewUser("ranga", "dummydummy");
+		
+		return new InMemoryUserDetailsManager(userDetails1, userDetails2);
+	}
+
+	private UserDetails createNewUser(String username, String password) {
+		Function<String, String> passwordEncoder
+		= input -> passwordEncoder().encode(input);
+
+		UserDetails userDetails = User.builder()
+									.passwordEncoder(passwordEncoder)
+									.username(username)
+									.password(password)
+									.roles("USER","ADMIN")
+									.build();
+		return userDetails;
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	//All URLs are protected
+	//A login form is shown for unauthorized requests
+	//CSRF disable
+	//Frames
+	
+	// dothis
+	// dothis
+	// executeRequest
+	
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		
+		
+		http.authorizeHttpRequests(
+				auth -> auth.anyRequest().authenticated());
+		
+		http.httpBasic(withDefaults());
+		
+		http.csrf().disable(); //POST or PUT
+		
+		http.headers().frameOptions().disable();
+		
+		return http.build();
+	}
 }
 ```
 ---
@@ -657,6 +744,7 @@ class FirstRestApiApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }
@@ -672,25 +760,45 @@ import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
-public class JsonAssertTest {
+class JsonAssertTest {
 
 	@Test
-	void testJsonAssert() throws JSONException {
-		JSONAssert.assertEquals("{}", "{}", false);
-		JSONAssert.assertEquals("{id:5}", "{ id : 5 }", false);
-		JSONAssert.assertEquals("{id:6, name:Ranga}", "{ id : 6, attr:5, name: \"Ranga\" }", false);	
+	void jsonAssert_learningBasics() throws JSONException {
+		
+		String expectedResponse =
+				"""
+				{
+					"id":"Question1",
+					"description":"Most Popular Cloud Platform Today",
+					"correctAnswer":"AWS"
+				}
+				""";
+		
+		String actualResponse =
+				"""
+				  {"id":"Question1",
+				  "description":"Most Popular Cloud Platform Today",
+				  "options":["AWS","Azure","Google Cloud","Oracle "],
+				  "correctAnswer":"AWS"}
+				""";
+
+		JSONAssert.assertEquals(expectedResponse, actualResponse, false);
+
 	}
 
 }
 ```
 ---
 
-### /src/test/java/com/in28minutes/springboot/firstrestapi/survey/SurveyResponseIT.java
+### /src/test/java/com/in28minutes/springboot/firstrestapi/survey/SurveyResourceIT.java
 
 ```java
 package com.in28minutes.springboot.firstrestapi.survey;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Base64;
 
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
@@ -705,77 +813,269 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class SurveyResponseIT {
-
-	// 
-	/*
-	 
-  "id": "Question1",
-  "description": "Most Popular Cloud Platform Today",
-  "options": [
-    "AWS",
-    "Azure",
-    "Google Cloud",
-    "Oracle Cloud"
-  ],
-  "correctAnswer": "AWS"
-} 
-	 
-	 */
+public class SurveyResourceIT {
 	
-	//{"id":"Question1","description":"Most Popular Cloud Platform Today","options":["AWS","Azure","Google Cloud","Oracle Cloud"],"correctAnswer":"AWS"}
-
+	private static String SPECIFIC_QUESTION_URL = "/surveys/Survey1/questions/Question1";
+	
+	private static String GENERIC_QUESTIONS_URL = "/surveys/Survey1/questions/";
+	
 	
 	@Autowired
-	TestRestTemplate template;
-	
+	private TestRestTemplate template;
+		
 	@Test
 	void retrieveSpecificSurveyQuestion_basicScenario() throws JSONException {
-		String url = "/surveys/Survey1/questions/Question1";
-		ResponseEntity<String> response = template.getForEntity(url, String.class);
-		//String expectedResponse="{\"id\":\"Question1\",\"description\":\"Most Popular Cloud Platform Today\",\"options\":[\"AWS\",\"Azure\",\"Google Cloud\",\"Oracle Cloud\"],\"correctAnswer\":\"AWS\"}";
-		String expectedResponse = "{id:Question1, correctAnswer:AWS, \"description\":\"Most Popular Cloud Platform Today\"}"; 
+
+		HttpHeaders headers = createHttpContentTypeAndAuthorizationHeaders();
 		
-		JSONAssert.assertEquals(expectedResponse, response.getBody(), false);
+		HttpEntity<String> httpEntity = new HttpEntity<String>(null, headers);
+		
+		ResponseEntity<String> responseEntity 
+			= template.exchange(SPECIFIC_QUESTION_URL, HttpMethod.GET, httpEntity, String.class);
+		
+		//ResponseEntity<String> responseEntity = template.getForEntity(SPECIFIC_QUESTION_URL, String.class);
+
+		String expectedResponse =
+				"""
+				{
+					"id":"Question1",
+					"description":"Most Popular Cloud Platform Today",
+					"correctAnswer":"AWS"
+				}
+				""";
+
+		assertTrue(responseEntity.getStatusCode().is2xxSuccessful());
+		assertEquals("application/json", responseEntity.getHeaders().get("Content-Type").get(0));
+		
+		JSONAssert.assertEquals(expectedResponse, responseEntity.getBody(), false);
+		 
 	}
 	
-	
+	@Test
+	void retrieveAllSurveyQuestions_basicScenario() throws JSONException {
+		
+		HttpHeaders headers = createHttpContentTypeAndAuthorizationHeaders();
+		
+		HttpEntity<String> httpEntity = new HttpEntity<String>(null, headers);
+		
+		ResponseEntity<String> responseEntity 
+			= template.exchange(GENERIC_QUESTIONS_URL, HttpMethod.GET, httpEntity, String.class);
+
+		
+		//ResponseEntity<String> responseEntity = template.getForEntity(GENERIC_QUESTIONS_URL, String.class);
+
+		String expectedResponse =
+				"""
+						[
+						  {
+						    "id": "Question1"
+						  },
+						  {
+						    "id": "Question2"
+						  },
+						  {
+						    "id": "Question3"
+						  }
+						]
+				
+				""";
+
+		assertTrue(responseEntity.getStatusCode().is2xxSuccessful());
+		assertEquals("application/json", responseEntity.getHeaders().get("Content-Type").get(0));
+		
+		JSONAssert.assertEquals(expectedResponse, responseEntity.getBody(), false);
+		 
+	}
+
 	
 	@Test
 	void addNewSurveyQuestion_basicScenario() {
-		
-		String url = "/surveys/Survey1/questions/";
-		
+
 		String requestBody = """
 					{
-					  "description": "Most Popular Cloud Platform Today New",
+					  "description": "Your Favorite Language",
 					  "options": [
-					    "AWS",
-					    "Azure",
-					    "Google Cloud",
-					    "Oracle Cloud"
+					    "Java",
+					    "Python",
+					    "JavaScript",
+					    "Haskell"
 					  ],
-					  "correctAnswer": "AWS"
+					  "correctAnswer": "Java"
 					}
 				""";
-		
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json");
-		HttpEntity<String> httpEntity = new HttpEntity(requestBody, headers);
-		
-		ResponseEntity<String> responseEntity = template.exchange(url, HttpMethod.POST, httpEntity, String.class);
-		System.out.println(responseEntity);
 
-		//<201 CREATED Created,
+		
+		HttpHeaders headers = createHttpContentTypeAndAuthorizationHeaders();
+		
+		HttpEntity<String> httpEntity = new HttpEntity<String>(requestBody, headers);
+		
+		ResponseEntity<String> responseEntity 
+			= template.exchange(GENERIC_QUESTIONS_URL, HttpMethod.POST, httpEntity, String.class);
+		
 		assertTrue(responseEntity.getStatusCode().is2xxSuccessful());
 		
 		String locationHeader = responseEntity.getHeaders().get("Location").get(0);
+		assertTrue(locationHeader.contains("/surveys/Survey1/questions/"));
 		
-		//Location:"http://localhost:55163/surveys/Survey1/questions/2080216181"
-		assertTrue(locationHeader.contains("/surveys/Survey1/questions"));
+		//DELETE
+		//locationHeader
+
+		ResponseEntity<String> responseEntityDelete 
+		= template.exchange(locationHeader, HttpMethod.DELETE, httpEntity, String.class);
+
+		assertTrue(responseEntityDelete.getStatusCode().is2xxSuccessful());
+		//template.delete(locationHeader);
+		
+	}
+
+	private HttpHeaders createHttpContentTypeAndAuthorizationHeaders() {
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json");
+		headers.add("Authorization", "Basic " + performBasicAuthEncoding("admin","password"));
+		return headers;
+	}
+	
+	
+	String performBasicAuthEncoding(String user, String password) {
+		String combined = user + ":" + password;
+		byte[] encodedBytes = Base64.getEncoder().encode(combined.getBytes());
+		return new String(encodedBytes);
+	}
+	
+}
+```
+---
+
+### /src/test/java/com/in28minutes/springboot/firstrestapi/survey/SurveyResourceTest.java
+
+```java
+package com.in28minutes.springboot.firstrestapi.survey;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+
+//SurveyResource
+@WebMvcTest(controllers = SurveyResource.class)
+@AutoConfigureMockMvc(addFilters = false)
+class SurveyResourceTest {
+	
+	@MockBean
+	private SurveyService surveyService;
+	
+	@Autowired
+	private MockMvc mockMvc;
+	
+	private static String SPECIFIC_QUESTION_URL = "http://localhost:8080/surveys/Survey1/questions/Question1";
+	
+	private static String GENERIC_QUESTION_URL = "http://localhost:8080/surveys/Survey1/questions/";
+	
+	@Test
+	void retrieveSpecificSurveyQuestion_404Scenario() throws Exception {
+		RequestBuilder requestBuilder = 
+				MockMvcRequestBuilders.get(SPECIFIC_QUESTION_URL).accept(MediaType.APPLICATION_JSON);
+		
+		MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();
+		
+		assertEquals(404, mvcResult.getResponse().getStatus());
+		
+	}
+
+	
+	@Test
+	void retrieveSpecificSurveyQuestion_basicScenario() throws Exception {
+		RequestBuilder requestBuilder = 
+				MockMvcRequestBuilders.get(SPECIFIC_QUESTION_URL).accept(MediaType.APPLICATION_JSON);
+		
+		
+		Question question = new Question("Question1", "Most Popular Cloud Platform Today",
+				Arrays.asList("AWS", "Azure", "Google Cloud", "Oracle Cloud"), "AWS");
+
+		when(surveyService.retrieveSpecificSurveyQuestion("Survey1", "Question1")).thenReturn(question);
+		
+		MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();		
+	
+		String expectedResponse = """
+				{
+				
+					"id":"Question1",
+					"description":"Most Popular Cloud Platform Today",
+					"options":["AWS","Azure","Google Cloud","Oracle Cloud"],
+					"correctAnswer":"AWS"
+				
+				}
+						
+				"""; 
+		
+		
+		MockHttpServletResponse response = mvcResult.getResponse();
+		
+		assertEquals(200, response.getStatus());
+		JSONAssert.assertEquals(expectedResponse, response.getContentAsString(), false);
 		
 		
 	}
+	
+	@Test
+	void addNewSurveyQuestion_basicScenario() throws Exception {
+
+		String requestBody = """
+				{
+				  "description": "Your Favorite Language",
+				  "options": [
+				    "Java",
+				    "Python",
+				    "JavaScript",
+				    "Haskell"
+				  ],
+				  "correctAnswer": "Java"
+				}
+			""";
+		
+		when(surveyService.addNewSurveyQuestion(anyString(),any())).thenReturn("SOME_ID");
+
+		RequestBuilder requestBuilder = 
+				MockMvcRequestBuilders.post(GENERIC_QUESTION_URL)
+				.accept(MediaType.APPLICATION_JSON)
+				.content(requestBody).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();		
+		
+		MockHttpServletResponse response = mvcResult.getResponse();
+		String locationHeader = response.getHeader("Location");
+		
+		assertEquals(201, response.getStatus());
+		assertTrue(locationHeader.contains("/surveys/Survey1/questions/SOME_ID"));
+		
+	}
+	
 }
+
+
+
+
+
+
+
+
+
 ```
 ---
