@@ -363,6 +363,16 @@ public class SurveyResource {
 		return ResponseEntity.noContent().build();
 	}
 
+	@RequestMapping(value="/surveys/{surveyId}/questions/{questionId}", method = RequestMethod.PUT)
+	public ResponseEntity<Object> updateSurveyQuestion(@PathVariable String surveyId,
+			@PathVariable String questionId,
+			@RequestBody Question question){
+		
+		surveyService.updateSurveyQuestion(surveyId, questionId, question);
+		
+		return ResponseEntity.noContent().build();
+	}
+
 }
 ```
 ---
@@ -472,6 +482,12 @@ public class SurveyService {
 		if(!removed) return null;
 
 		return questionId;
+	}
+
+	public void updateSurveyQuestion(String surveyId, String questionId, Question question) {
+		List<Question> questions = retrieveAllSurveyQuestions(surveyId);
+		questions.removeIf(q -> q.getId().equalsIgnoreCase(questionId));
+		questions.add(question);
 	}
 
 }
