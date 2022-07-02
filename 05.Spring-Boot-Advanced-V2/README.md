@@ -25,6 +25,124 @@ surveys.add(survey);
 
 ```
 
+### URLs
+
+#### Basic Authorization Header
+
+- Authorization - Basic YWRtaW46cGFzc3dvcmQ=
+
+#### GET
+
+- http://localhost:8080/surveys
+- http://localhost:8080/surveys/Survey1
+- http://localhost:8080/surveys/Survey1/questions
+- http://localhost:8080/surveys/Survey1/questions/Question1
+- http://localhost:8080/userDetailses?size=1
+
+##### Response
+
+```
+[
+    {
+        "id": "Survey1",
+        "title": "My Favorite Survey",
+        "description": "Description of the Survey",
+        "questions": [
+            {
+                "id": "Question1",
+                "description": "Most Popular Cloud Platform Today",
+                "options": [
+                    "AWS",
+                    "Azure",
+                    "Google Cloud",
+                    "Oracle Cloud"
+                ],
+                "correctAnswer": "AWS"
+            },
+            {
+                "id": "Question2",
+                "description": "Fastest Growing Cloud Platform",
+                "options": [
+                    "AWS",
+                    "Azure",
+                    "Google Cloud",
+                    "Oracle Cloud"
+                ],
+                "correctAnswer": "Google Cloud"
+            },
+            {
+                "id": "Question3",
+                "description": "Most Popular DevOps Tool",
+                "options": [
+                    "Kubernetes",
+                    "Docker",
+                    "Terraform",
+                    "Azure DevOps"
+                ],
+                "correctAnswer": "Kubernetes"
+            }
+        ]
+    }
+]
+
+```
+
+#### DELETE 
+
+- http://localhost:8080/surveys/Survey1/questions/Question1
+
+##### POST
+
+**URL**: http://localhost:8080/surveys/Survey1/questions/
+**Header**: Content-Type:application/json
+
+**Request Body**
+```
+{
+    "description": "Your Favorite Cloud Platform",
+    "options": [
+        "AWS",
+        "Azure",
+        "Google Cloud",
+        "Oracle Cloud"
+    ],
+    "correctAnswer": "Google Cloud"
+}
+
+```
+
+**URL**: http://localhost:8080/userDetailses
+**Header**: Content-Type:application/json
+**Request Body**
+```
+{
+"name": "Sathish",
+"role": "Admin"
+}
+```
+
+
+##### PUT
+
+**URL**: http://localhost:8080/surveys/Survey1/questions/Question1
+**Header**: Content-Type:application/json
+**Request Body**
+```
+{
+    "id": "Question1",
+    "description": "Most Popular Cloud Platform Today Change",
+    "options": [
+        "AWS",
+        "Azure",
+        "Google Cloud",
+        "Oracle Cloud"
+    ],
+    "correctAnswer": "Google Cloud"
+}
+
+```
+
+
 
 ## Step By Step Details
 
