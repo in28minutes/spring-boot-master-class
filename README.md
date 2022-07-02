@@ -299,3 +299,126 @@ Congratulations!
 ## Keep Learning in28Minutes
 
 in28Minutes is creating amazing solutions for you to learn Spring Boot, Full Stack and the Cloud - Docker, Kubernetes, AWS, React, Angular etc. - [Check out all our courses here](https://github.com/in28minutes/learn)
+
+
+## Lecture Uploads
+
+### Files to Upload 20220627
+```
+00 Spring Boot Master Class 00 - Promo 20220627.mp4
+00 Spring Boot Master Class 01 - Course Preview 20220627.mp4
+00 Spring Boot Master Class 03 - Installing Java and Eclipse 20220627.mp4
+
+92 Step 01 - Getting Started with Spring Boot - Goals.mp4
+92 Step 02 - Setting up New Spring Boot Project with Spring Initializr.mp4
+92 Step 03 - Build a Hello World API with Spring Boot.mp4
+92 Step 04 - Understanding the World Before Spring Boot - 10000 Feet Overview.mp4
+92 Step 05 - Understanding Spring Boot Magic - Spring Boot Starter Projects.mp4
+92 Step 06 - Understanding Spring Boot Magic - Auto Configuration.mp4
+92 Step 07 - Playing with Spring Boot.mp4
+92 Step 08 - Understanding Spring Boot Magic - Embedded Servers.mp4
+92 Step 09 - Exploring Spring Boot Actuator.mp4
+92 Step 10 - Exploring Spring Boot DevTools.mp4
+92 Step 11 - Understanding Spring Boot vs Spring vs Spring MVC.mp4
+92 Step 12 - Getting Started with Spring Boot - Review.mp4
+
+Step 01 - Creating Spring Boot Web Application with Spring Initializr 20220627.mp4
+Step 02 - Quick overview of Spring Boot Project 20220627.mp4
+Step 03 - First Spring MVC Controller, @ResponseBody, @Controller 20220627.mp4
+Step 04 - 01 - Enhancing Spring MVC Controller to provide HTML response 20220627.mp4
+Step 04 - 02 - Exploring Step By Step Coding and Debugging Guide 20220627.mp4
+Step 05 - Redirect to a JSP using Spring Boot - Controller, @ResponseBody and View Resolver 20220627.mp4
+Step 06 - Exercise - Creating LoginController and login view 20220627.mp4
+Step 07 - Quick Overview - How does web work - Request and Response 20220627.mp4
+Step 08 - Capturing QueryParams using RequestParam and First Look at Model 20220627.mp4
+Step 09 - Quick Overview - Importance of Logging with Spring Boot 20220627.mp4
+Step 10 - Understanding DispatcherServlet, Model 1, Model 2 and Front Controller 20220627.mp4
+Step 11 - Creating a Login Form 20220627.mp4
+Step 12 - Displaying Login Credentials in a JSP using Model 20220627.mp4
+Step 13 - Add hard coded validation of userid and password 20220627.mp4
+Step 14 - Getting started with Todo Features - Creating Todo and TodoService 20220627.mp4
+Step 15 - Creating first version of List Todos Page 20220627.mp4
+Step 16 - Understanding Session vs Model vs Request - @SessionAttributes 20220627.mp4
+Step 17 - Adding JSTL to Spring Boot Project and Showing Todos in a Table 20220627.mp4
+Step 18 - Adding Bootstrap CSS framework to Spring Boot Project using webjars 20220627.mp4
+Step 19 - Formatting JSP pages with Bootstrap CSS framework 20220627.mp4
+Step 20 - Lets Add a New Todo - Create a new View 20220627.mp4
+Step 21 - Enhancing TodoService to add the todo 20220627.mp4
+Step 22 - Adding Validations using Spring Boot Starter Validation 20220627.mp4
+Step 23 - Using Command Beans to implement New Todo Page Validations 20220627.mp4
+Step 24 - Implementing Delete Todo Feature - New View 20220627.mp4
+Step 25 - Implementing Update Todo - 1 - Show Update Todo Page 20220627.mp4
+Step 26 - Implementing Update Todo - 1 - Save changes to Todo 20220627.mp4
+Step 27 - Adding Target Date Field to Todo Page 20220627.mp4
+Step 28 - Adding a Navigation Bar and Implementing JSP Fragments 20220627.mp4
+Step 29 - Preparing for Spring Security 20220627.mp4
+Step 30 - Setting up Spring Security with Spring Boot Starter Security 20220627.mp4
+Step 31 - Configuring Spring Security with Custom User and Password Encoder 20220627.mp4
+Step 32 - Refactoring and Removing Hardcoding of User Id 20220627.mp4
+Step 33 - Setting up a New User for Todo Application 20220627.mp4
+Step 34 - Adding Spring Boot Starter Data JPA and Getting H2 database ready 20220627.mp4
+Step 35 - 01 - Configuring Spring Security to Get H2 console Working 20220627.mp4
+Step 35 - 02 - JDBC to Spring JDBC to JPA to Spring Data JPA - 10000 Feet Overview.mp4
+Step 36 - Making Todo an Entity and Population Todo Data into H2 20220627.mp4
+Step 37 - Creating TodoRepository and Connecting List Todos page from H2 database 20220627.mp4
+Step 38 - 01 - Connecting All Todo App Features to H2 Database 20220627.mp4
+Step 38 - 02 - Exploring Magic of Spring Boot Starter JPA and JpaRepository 20220627.mp4
+Step 39 - OPTIONAL - Overview of Connecting Todo App to MySQL database 20220627.mp4
+Step 40 - OPTIONAL - Installing Docker 20220627.mp4
+Step 41 - OPTIONAL - Connecting Todo App to MySQL database 20220627.mp4
+
+Step 00 - Introduction to Functional Programming - Overview 20220627.mp4
+Step 01 - Getting Started with Functional Programming with Java.mp4
+Step 02 - Writing Your First Java Functional Program.mp4
+Step 03 - Improving Java Functional Program with filter.mp4
+Step 04 - Using Lambda Expression to enhance your Functional Program.mp4
+Step 05 - Do Functional Programming Exercises with Streams, Filters and Lambdas.mp4
+Step 06 - Using map in Functional Programs - with Exercises.mp4
+Step 07 - Quick Review of Functional Programming Basics.mp4
+```
+
+### Files to Upload 20220702
+```
+Step 01 - Quick Introduction to REST - Understand Resource and Actions 20220701.mp4
+Step 02 - Creating Spring Boot Project for REST with Maven and Eclipse 20220701.mp4
+Step 03 - Creating your first Spring Boot Resource - Hello World 20220701.mp4
+Step 04 - Creating a Second Spring Boot Resource Method - Hello World Bean 20220701.mp4
+Step 05 - Exploring Path Params and Path Variables with Spring Boot 20220701.mp4
+Step 06 - Getting Ready for Survey Questionnaire REST API 20220701.mp4
+Step 07 - Creating First Survey Spring Boot REST API - GET all surveys 20220701.mp4
+Step 08 - Creating Second Survey Spring Boot REST API Method - GET a survey 20220701.mp4
+Step 09 - Exploring REST API Best Practices - Request Methods and Response Status 20220701.mp4
+Step 10 - Exercise - Creating Survey Question related Spring Boot REST API Methods 20220701.mp4
+Step 11 - Creating Spring Boot REST API to create Survey Question - POST 20220701.mp4
+Step 12 - Improving POST Method - Status CREATED and Location Header 20220701.mp4
+Step 13 - Implementing Spring Boot REST API Method to DELETE a Question 20220701.mp4
+Step 14 - Implementing Spring Boot REST Method to Update a Question - PUT 20220701.mp4
+Step 15 - Setting up Spring Boot Data JPA with H2 Database and User Entity 20220701.mp4
+Step 16 - Exploring Spring Boot Data JPA using Command Line Runner 20220701.mp4
+Step 17 - Creating User REST API with Spring Boot Starter Rest 20220701.mp4
+Step 18 - Writing Your First Spring Boot Integration Test 20220701.mp4
+Step 19 - Writing Asserts for JSON in Spring Boot Tests - JsonAssert 20220701.mp4
+Step 20 - Improving JUnit Asserts for Spring Boot Integration Test 20220701.mp4
+Step 21 - Writing Spring Boot Integration Test for GET method returning List 20220701.mp4
+Step 22 - Writing Spring Boot Integration Test for POST method creating a Question 20220701.mp4
+Step 23 - Understanding JUnit Best Practice - Have ZERO Side Effects 20220701.mp4
+Step 24 - Writing Your First Spring Boot Mock MVC Unit Test 20220701.mp4
+Step 25 - Improving Asserts for Spring Boot Mock MVC Unit Test 20220701.mp4
+Step 26 - Writing Spring Boot Mock MVC Unit Test for POST Method 20220701.mp4
+Step 27 - Getting Started with Spring Boot Starter Security 20220701.mp4
+Step 28 - Configuring Spring Security for Spring Boot REST API 20220701.mp4
+Step 29 - Fixing Spring Boot Unit and Integration Tests 20220701.mp4
+
+01 Step 01 - What is JUnit and Unit Testing? 20220701.mp4
+01 Step 02 - Your First JUnit Project and Green Bar 20220701.mp4
+01 Step 03 - Your First Code and First Unit Test 20220701.mp4
+01 Step 04 - Exploring other assert methods 20220701.mp4
+01 Step 05 - Exploring few important JUnit annotations 20220701.mp4
+
+02 Step 00 - Introduction to Section - Mockito in 5 Steps 20220701.mp4
+02 Step 01 - Setting up a Spring Boot Project 20220701.mp4
+02 Step 02 - Understanding problems with Stubs 20220701.mp4
+02 Step 03 - Writing your first Mockito test with Mocks 20220701.mp4
+02 Step 04 - Simplifying Tests with Mockito Annotations - @Mock, @InjectMocks 20220701.mp4
+02 Step 05 - Exploring Mocks further by Mocking List interface 20220701.mp4
+```

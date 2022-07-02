@@ -40,12 +40,12 @@ Mockito is the most famous mocking framework in Java.
 
 ## Step by Step Details
 
-- Step 1 : Setting up an example using http://start.spring.io.
-- Step 2 : Using a Stubs - Disadvantages
-- Step 3 : Your first mock. 
-- Step 4 : Using Mockito Annotations - @Mock, @InjectMocks, @RunWith(MockitoJUnitRunner.class)
-- Step 5 : Mocking List interface
-
+- Step 00 - Introduction to Section - Mockito in 5 Steps
+- Step 01 - Setting up a Spring Boot Project
+- Step 02 - Understanding problems with Stubs
+- Step 03 - Writing your first Mockito test with Mocks
+- Step 04 - Simplifying Tests with Mockito Annotations - @Mock, @InjectMocks
+- Step 05 - Exploring Mocks further by Mocking List interface
 <!---
 Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-class/04.Mockito-Introduction-In-5-Steps-V2
 -->

@@ -24,3 +24,36 @@ Survey survey = new Survey("Survey1", "My Favorite Survey",
 surveys.add(survey);
 
 ```
+
+
+## Step By Step Details
+
+- Step 01 - Quick Introduction to REST - Understand Resource and Actions
+- Step 02 - Creating Spring Boot Project for REST with Maven and Eclipse
+- Step 03 - Creating your first Spring Boot Resource - Hello World
+- Step 04 - Creating a Second Spring Boot Resource Method - Hello World Bean
+- Step 05 - Exploring Path Params and Path Variables with Spring Boot
+- Step 06 - Getting Ready for Survey Questionnaire REST API
+- Step 07 - Creating First Survey Spring Boot REST API - GET all surveys
+- Step 08 - Creating Second Survey Spring Boot REST API Method - GET a survey
+- Step 09 - Exploring REST API Best Practices - Request Methods and Response Status
+- Step 10 - Exercise - Creating Survey Question related Spring Boot REST API Methods
+- Step 11 - Creating Spring Boot REST API to create Survey Question - POST
+- Step 12 - Improving POST Method - Status CREATED and Location Header
+- Step 13 - Implementing Spring Boot REST API Method to DELETE a Question
+- Step 14 - Implementing Spring Boot REST Method to Update a Question - PUT
+- Step 15 - Setting up Spring Boot Data JPA with H2 Database and User Entity
+- Step 16 - Exploring Spring Boot Data JPA using Command Line Runner
+- Step 17 - Creating User REST API with Spring Boot Starter Rest
+- Step 18 - Writing Your First Spring Boot Integration Test
+- Step 19 - Writing Asserts for JSON in Spring Boot Tests - JsonAssert
+- Step 20 - Improving JUnit Asserts for Spring Boot Integration Test
+- Step 21 - Writing Spring Boot Integration Test for GET method returning List
+- Step 22 - Writing Spring Boot Integration Test for POST method creating a Question
+- Step 23 - Understanding JUnit Best Practice - Have ZERO Side Effects
+- Step 24 - Writing Your First Spring Boot Mock MVC Unit Test
+- Step 25 - Improving Asserts for Spring Boot Mock MVC Unit Test
+- Step 26 - Writing Spring Boot Mock MVC Unit Test for POST Method
+- Step 27 - Getting Started with Spring Boot Starter Security
+- Step 28 - Configuring Spring Security for Spring Boot REST API
+- Step 29 - Fixing Spring Boot Unit and Integration Tests

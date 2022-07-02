@@ -1,3 +1,28 @@
+## First 5 Steps in JUnit
+
+### Step 1 : What is JUnit and Unit Testing?
+ - What is JUnit?
+ - What is Unit Testing?
+ - Advantages of Unit Testing
+
+### Step 2 : First JUnit Project and Green Bar
+ - What is JUnit?
+ - First Project with JUnit
+ - First JUnit Class
+ - No Failure is Success
+ - MyMath class with sum method
+
+### Step 3 : First Code and First Unit Test
+ - Unit test for the sum method
+
+### Step 4 : Other assert methods
+ - assertTrue and assertFalse methods
+
+### Step 5 : Important annotations
+  - @Before @After annotations
+  - @BeforeClass @AfterClass annotations
+
+
 <!---
 Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-class/03.JUnit-Introduction-In-5-Steps-V2
 -->

@@ -248,14 +248,6 @@ class SurveyResourceIT {
     }
 
 
-    private String createHttpAuthenticationHeaderValue(String userId,
-            String password) {
-
-        String auth = userId + ":" + password;
-        byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes(StandardCharsets.US_ASCII));
-        String headerValue = "Basic " + new String(encodedAuth);
-        return headerValue;
-    }
 
     @Test
     public void testRetrieveAllSurveyQuestion() throws JSONException {
@@ -428,11 +420,6 @@ public class SecurityConfig {
 }
 
 
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
 
 
 ## Spring Boot Starter Web
