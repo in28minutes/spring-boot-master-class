@@ -1,0 +1,16 @@
+
+dev
+~~~~
+logging.level.org.springframework=trace
+
+prod
+~~~~
+logging.level.org.springframework=info
+
+trace
+debug
+info
+error
+
+/Users/ranga/Ranga/git/00.courses/spring-boot-master-class/01.Spring-Boot-Introduction-In-10-Steps-V2/target/
+learn-spring-boot-0.0.1-SNAPSHOT.jar
