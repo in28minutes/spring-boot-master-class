@@ -280,11 +280,8 @@ package com.in28minutes.springboot.firstrestapi.survey;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class SurveyResource {
@@ -301,17 +298,6 @@ public class SurveyResource {
 	public List<Survey> retrieveAllSurveys(){
 		return surveyService.retrieveAllSurveys();
 	}
-	
-	@RequestMapping("/surveys/{surveyId}")
-	public Survey retrieveSurveyById(@PathVariable String surveyId){
-		Survey survey = surveyService.retrieveSurveyById(surveyId);
-		
-		if(survey==null)
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		
-		return survey;
-	}
-
 }
 ```
 ---
@@ -324,8 +310,6 @@ package com.in28minutes.springboot.firstrestapi.survey;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
@@ -359,19 +343,6 @@ public class SurveyService {
 
 	public List<Survey> retrieveAllSurveys() {
 		return surveys;
-	}
-
-	public Survey retrieveSurveyById(String surveyId) {
-		
-		Predicate<? super Survey> predicate =
-				survey -> survey.getId().equalsIgnoreCase(surveyId);
-		
-		Optional<Survey> optionalSurvey 
-				= surveys.stream().filter(predicate).findFirst();
-		
-		if(optionalSurvey.isEmpty()) return null;
-		
-		return optionalSurvey.get();
 	}
 
 }
