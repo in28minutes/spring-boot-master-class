@@ -844,7 +844,7 @@ public class TodoController {
 	@RequestMapping(value="add-todo", method = RequestMethod.GET)
 	public String showNewTodoPage(ModelMap model) {
 		String username = (String)model.get("name");
-		Todo todo = Todo(0, username, "Default Desc", LocalDate.now().plusYears(1), false);
+		Todo todo = new Todo(0, username, "Default Desc", LocalDate.now().plusYears(1), false);
 		model.put("todo", todo);
 		return "todo";
 	}
