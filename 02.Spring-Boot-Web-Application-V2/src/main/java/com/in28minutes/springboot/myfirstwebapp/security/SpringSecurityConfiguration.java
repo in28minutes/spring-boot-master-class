@@ -7,6 +7,8 @@ import java.util.function.Function;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -53,16 +55,22 @@ public class SpringSecurityConfiguration {
 	//A login form is shown for unauthorized requests
 	//CSRF disable
 	//Frames
-	
+
+	// Starting from Spring Boot 3.1.x Build Pattern/Fluent API Replaced with Lambda DSL(Domain Specific Language) or Method Reference
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
 		http.authorizeHttpRequests(
 				auth -> auth.anyRequest().authenticated());
 		http.formLogin(withDefaults());
-		
-		http.csrf().disable();
-		http.headers().frameOptions().disable();
+
+		// http.csrf().disable();
+		http.csrf(csrf -> csrf.disable());
+		// http.csrf(AbstractHttpConfigurer::disable);
+		// http.headers().frameOptions().disable();
+		http.headers(headers -> headers.frameOptions(frameOptionsConfig-> frameOptionsConfig.disable()));
+
+		// http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
 		
 		return http.build();
 	}

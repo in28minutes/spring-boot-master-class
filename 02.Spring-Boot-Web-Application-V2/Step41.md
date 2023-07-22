@@ -15,7 +15,7 @@ Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.0-M3</version>
+		<version>3.1.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.in28minutes.springboot</groupId>
@@ -45,9 +45,9 @@ Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-
 		</dependency> -->
 		
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
+	       <groupId>com.mysql</groupId>
+	        <artifactId>mysql-connector-j</artifactId>
+        </dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -310,8 +310,8 @@ public class SpringSecurityConfiguration {
 				auth -> auth.anyRequest().authenticated());
 		http.formLogin(withDefaults());
 		
-		http.csrf().disable();
-		http.headers().frameOptions().disable();
+		http.csrf(csrf -> csrf.disable());
+		http.headers(headers -> headers.frameOptions(frameOptionsConfig-> frameOptionsConfig.disable()));
 		
 		return http.build();
 	}
@@ -883,7 +883,7 @@ spring.jpa.defer-datasource-initialization=true
 spring.datasource.url=jdbc:mysql://localhost:3306/todos
 spring.datasource.username=todos-user
 spring.datasource.password=dummytodos
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 
 spring.jpa.hibernate.ddl-auto=update
 
