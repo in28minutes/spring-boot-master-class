@@ -1738,8 +1738,8 @@ docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=tod
 
 ```
 <dependency>
-	<groupId>mysql</groupId>
-	<artifactId>mysql-connector-java</artifactId>
+    <groupId>com.mysql</groupId>
+	<artifactId>mysql-connector-j</artifactId>
 </dependency>
 ```
 
