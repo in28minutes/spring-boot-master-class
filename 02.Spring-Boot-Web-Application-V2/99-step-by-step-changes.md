@@ -1501,9 +1501,9 @@ public class SpringSecurityConfiguration {
 		http.authorizeHttpRequests(
 				auth -> auth.anyRequest().authenticated());
 		http.formLogin(withDefaults());
-		
-		http.csrf().disable();
-		http.headers().frameOptions().disable();
+
+		http.csrf(csrf -> csrf.disable());
+		http.headers(headers -> headers.frameOptions(frameOptionsConfig-> frameOptionsConfig.disable()));
 		
 		return http.build();
 	}
@@ -1738,8 +1738,8 @@ docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=tod
 
 ```
 <dependency>
-	<groupId>mysql</groupId>
-	<artifactId>mysql-connector-java</artifactId>
+    <groupId>com.mysql</groupId>
+	<artifactId>mysql-connector-j</artifactId>
 </dependency>
 ```
 
@@ -1750,7 +1750,7 @@ docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=tod
 spring.datasource.url=jdbc:mysql://localhost:3306/todos
 spring.datasource.username=todos-user
 spring.datasource.password=dummytodos
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 spring.jpa.hibernate.ddl-auto=update
 #/connect todos-user@localhost:3306
 #docker run --detach 

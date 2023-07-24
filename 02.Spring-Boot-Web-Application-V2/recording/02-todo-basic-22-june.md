@@ -13,7 +13,7 @@ Current Directory : /Ranga/001.Notes/00.CoursePreparations/2022-06-Spring-Boot-U
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.0-M3</version>
+		<version>3.1.1</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.in28minutes.springboot.web</groupId>
