@@ -42,10 +42,7 @@ public class SurveyService {
 
 		Optional<Survey> optionalSurvey = surveys.stream().filter(predicate).findFirst();
 
-		if (optionalSurvey.isEmpty())
-			return null;
-
-		return optionalSurvey.get();
+		return optionalSurvey.orElse(null);
 	}
 
 	public List<Question> retrieveAllSurveyQuestions(String surveyId) {
@@ -67,10 +64,7 @@ public class SurveyService {
 		Optional<Question> optionalQuestion = surveyQuestions.stream()
 				.filter(q -> q.getId().equalsIgnoreCase(questionId)).findFirst();
 
-		if (optionalQuestion.isEmpty())
-			return null;
-
-		return optionalQuestion.get();
+		return optionalQuestion.orElse(null);
 	}
 
 	public String addNewSurveyQuestion(String surveyId, Question question) {
