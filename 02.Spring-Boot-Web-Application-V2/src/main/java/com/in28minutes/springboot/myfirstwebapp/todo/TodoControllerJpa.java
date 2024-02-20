@@ -18,14 +18,14 @@ import jakarta.validation.Valid;
 @Controller
 @SessionAttributes("name")
 public class TodoControllerJpa {
+
+	private TodoRepository todoRepository;
 	
 	public TodoControllerJpa(TodoRepository todoRepository) {
 		super();
 		this.todoRepository = todoRepository;
 	}
 
-	private TodoRepository todoRepository;
-			
 	@RequestMapping("list-todos")
 	public String listAllTodos(ModelMap model) {
 		String username = getLoggedInUsername(model);
@@ -89,8 +89,7 @@ public class TodoControllerJpa {
 	}
 
 	private String getLoggedInUsername(ModelMap model) {
-		Authentication authentication = 
-				SecurityContextHolder.getContext().getAuthentication();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		return authentication.getName();
 	}
 

@@ -14,7 +14,7 @@ Current Directory : /Ranga/001.Notes/00.CoursePreparations/2022-06-Spring-Boot-U
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.1</version>
+		<version>3.2.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.in28minutes.springboot</groupId>
@@ -23,7 +23,7 @@ Current Directory : /Ranga/001.Notes/00.CoursePreparations/2022-06-Spring-Boot-U
 	<name>myfirstwebapp</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
