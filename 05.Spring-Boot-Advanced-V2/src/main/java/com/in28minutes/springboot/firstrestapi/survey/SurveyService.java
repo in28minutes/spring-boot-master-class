@@ -13,20 +13,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class SurveyService {
 
-	private static List<Survey> surveys = new ArrayList<>();
+	private static final List<Survey> surveys = new ArrayList<>();
 
 	static {
 
-		Question question1 = new Question("Question1", "Most Popular Cloud Platform Today",
-				Arrays.asList("AWS", "Azure", "Google Cloud", "Oracle Cloud"), "AWS");
-		Question question2 = new Question("Question2", "Fastest Growing Cloud Platform",
-				Arrays.asList("AWS", "Azure", "Google Cloud", "Oracle Cloud"), "Google Cloud");
-		Question question3 = new Question("Question3", "Most Popular DevOps Tool",
-				Arrays.asList("Kubernetes", "Docker", "Terraform", "Azure DevOps"), "Kubernetes");
+		var question1 = new Question("Question1", "Most Popular Cloud Platform Today",
+				List.of("AWS", "Azure", "Google Cloud", "Oracle Cloud"), "AWS");
+		var question2 = new Question("Question2", "Fastest Growing Cloud Platform",
+				List.of("AWS", "Azure", "Google Cloud", "Oracle Cloud"), "Google Cloud");
+		var question3 = new Question("Question3", "Most Popular DevOps Tool",
+				List.of("Kubernetes", "Docker", "Terraform", "Azure DevOps"), "Kubernetes");
 
-		List<Question> questions = new ArrayList<>(Arrays.asList(question1, question2, question3));
+		List<Question> questions = new ArrayList<>(List.of(question1, question2, question3));
 
-		Survey survey = new Survey("Survey1", "My Favorite Survey", "Description of the Survey", questions);
+		var survey = new Survey("Survey1", "My Favorite Survey", "Description of the Survey", questions);
 
 		surveys.add(survey);
 
@@ -42,11 +42,9 @@ public class SurveyService {
 
 		Optional<Survey> optionalSurvey = surveys.stream().filter(predicate).findFirst();
 
-		if (optionalSurvey.isEmpty())
-			return null;
+        return optionalSurvey.orElse(null);
 
-		return optionalSurvey.get();
-	}
+    }
 
 	public List<Question> retrieveAllSurveyQuestions(String surveyId) {
 		Survey survey = retrieveSurveyById(surveyId);
@@ -67,11 +65,9 @@ public class SurveyService {
 		Optional<Question> optionalQuestion = surveyQuestions.stream()
 				.filter(q -> q.getId().equalsIgnoreCase(questionId)).findFirst();
 
-		if (optionalQuestion.isEmpty())
-			return null;
+        return optionalQuestion.orElse(null);
 
-		return optionalQuestion.get();
-	}
+    }
 
 	public String addNewSurveyQuestion(String surveyId, Question question) {
 		List<Question> questions = retrieveAllSurveyQuestions(surveyId);

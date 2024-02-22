@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserDetailsCommandLineRunner implements CommandLineRunner {
 
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+
+	private final UserDetailsRepository repository;
+
 	public UserDetailsCommandLineRunner(UserDetailsRepository repository) {
 		super();
 		this.repository = repository;
 	}
-
-	private Logger logger = LoggerFactory.getLogger(getClass());
-
-	private UserDetailsRepository repository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -30,7 +30,6 @@ public class UserDetailsCommandLineRunner implements CommandLineRunner {
 		List<UserDetails> users = repository.findByRole("Admin");
 		
 		users.forEach(user -> logger.info(user.toString()));
-		
 		
 	}
 
