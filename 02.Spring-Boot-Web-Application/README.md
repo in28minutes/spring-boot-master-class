@@ -61,8 +61,8 @@ grant all on todo_example.* to 'todouser'@'localhost';
 Table
 ```sql
 create table todo 
-(id integer not null, 
-desc varchar(255), 
+(id integer not null auto_increment, 
+description varchar(255), 
 is_done boolean not null, 
 target_date timestamp, 
 user varchar(255), 
