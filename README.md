@@ -8,8 +8,8 @@ Understand and love the power of Spring Boot - All its features are illustrated 
 ### Our Recommendations
 
 - Use **latest version** of Java
-- Use **latest version** of "Eclipse IDE for Enterprise Java Developers"
-- Remember: Spring Boot 3+ works only with Java 17+
+- Use **latest version** of "Eclipse IDE for Enterprise Java Developers" or Intellij Community Edition
+- Remember: Spring Boot 3+ or 4+ works only with Java 17+
 
 ### Installing Java
 
@@ -83,14 +83,14 @@ You will learn about
 - Provide a range of non-functional features that are common to large classes of projects (e.g. embedded servers, security, metrics, health checks, externalized configuration).
 - Absolutely no code generation and no requirement for XML configuration.
 
-### 2.3.1 Spring Boot Upgrade
+### 4.0.0 Spring Boot Upgrade
 
 RECOMMENDED SPRING BOOT VERSION 
 ```
 <parent>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-parent</artifactId>
-	<version>2.3.1.RELEASE</version>
+	<version>4.0.0</version>
 </parent>
 ```
 

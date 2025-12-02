@@ -1,9 +1,10 @@
 package com.in28minutes.learning.jpa.jpain10steps.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+import jakarta.persistence.Table;
 
 //Table - User
 @Entity

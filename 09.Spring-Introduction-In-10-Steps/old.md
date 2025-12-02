@@ -15,7 +15,7 @@ Current Directory : /in28Minutes/git/java-a-course-for-beginners/51-learn-spring
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.4</version>
+		<version>4.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.in28minutes</groupId>
@@ -24,7 +24,7 @@ Current Directory : /in28Minutes/git/java-a-course-for-beginners/51-learn-spring
 	<name>learn-spring-framework</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>25</java.version>
 	</properties>
 	<dependencies>
 
@@ -35,12 +35,12 @@ Current Directory : /in28Minutes/git/java-a-course-for-beginners/51-learn-spring
 
 <!-- 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
+			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
